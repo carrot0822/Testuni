@@ -1,0 +1,30 @@
+
+.header_wel{ 
+	font-size:60rpx;
+	font-family:Helvetica;
+	font-weight:800;
+	color:rgba(28,135,255,1);
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}
+.header_arch{ 
+	font-size:46rpx;
+	font-family:PingFang SC;
+	font-weight:400;
+	color:rgba(28,135,255,1);
+	position: absolute;
+	top: 68%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}
+.header image{
+	width: 100%;
+	height: 100%; 
+	background-size: 100% 100%;
+	position: absolute;
+}
+

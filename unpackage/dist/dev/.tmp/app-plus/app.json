@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/option/option",
+    "pages/search/search",
+    "pages/index/header",
+    "pages/index/fileDetails"
+  ],
+  "window": {
+    "enablePullDownRefresh": true
+  },
+  "nvueCompiler": "uni-app",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "档案管理1",
+  "compilerVersion": "2.4.6",
+  "usingComponents": {}
+}

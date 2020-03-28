@@ -1,0 +1,519 @@
+<template>
+	<view class="content"> 
+	 <view class="status_sty" :style="{ height: statusBarHeight + 'px'}"></view>
+			<view class="header_box">
+				<view class="address_select">
+					<!-- 库房 -->
+					 <view class="uni-list">
+						<view class="uni-list-cell">  
+							<view class="uni-list-cell-db">
+								<picker @change="storeroomChange" :value="storeroomIndex" :range="storeroomArray" > 
+									<view class="uni-input" v-if="storeroomArray.length!=0"> 
+										{{storeroomArray[storeroomIndex]}}
+										<image src="../../static/sel.png" mode="aspectFit" style="width: 18upx;height: 18upx;margin: 6upx 16upx;"></image>
+									</view>
+									<view  v-else class="uni-input" >无库房</view>
+								</picker>
+							</view>
+						</view>
+					</view>  
+				</view> 
+				
+				<view class="search_box" @click="onPageJump()">
+					<text class="icon_search"></text>
+					<text class="prompt">请输入关键字查询档案</text>
+				</view>
+			</view>  
+			<view class="mjj_box" :style="{height:bodyHeight + 'px'}">
+				<view class="sel_qu_lie">
+					<view class="sel_qu_lie_text">
+						当前区列：
+						<text class="sel_qu_lie_text_cur">
+							<text v-if="regionArray[regionIndex]">
+								{{regionArray[regionIndex]}}
+								<text style="font-size: 24upx;color: #B5B5B5;padding: 10upx;">区</text>
+							</text> 
+							<text v-if="cols[colIndex]">
+								{{cols[colIndex]}}
+								<text style="font-size: 24upx;color: #B5B5B5;padding: 10upx;">列</text>
+							</text> 
+						</text>
+					</view>
+					<view class="sel_qu_lie_list">
+						<view class="uni-list">
+						    <view class="uni-list-cell">  
+						        <view class="uni-list-cell-db">
+						            <picker @change="regionChange" :value="regionIndex" :range="regionArray">
+						                <view class="uni-input">
+											选择区
+											<image src="../../static/sel2.png" mode="aspectFit" style="width: 18upx;height: 18upx;margin: 6upx 14upx;"></image>
+										</view>
+						            </picker>
+						        </view>
+						    </view>
+						</view> 
+						<view class="uni-list">
+						    <view class="uni-list-cell"> 
+						        <view class="uni-list-cell-db">
+						            <picker @change="colChange" :value="colIndex" :range="cols">
+										<view class="uni-input">
+											选择列
+											<image src="../../static/sel2.png" mode="aspectFit" style="width: 18upx;height: 18upx;margin: 6upx 14upx;"></image>
+										</view>
+						            </picker>
+						        </view>
+						    </view>
+						</view>	
+					</view> 
+				</view>
+				<view class="show_temp">
+					<view class="show_temp_title">
+						<view style="width: 30%;">当前环境值 </view>
+						<view style="width: 70%;">
+							<image src="../../static/line.png" mode="aspectFit" style="height: 20upx;width: 90%;"></image>
+						</view>
+					</view>
+					<view class="temp_shelf">
+						<scroll-view class="temp_shelf_box" scroll-x="true" @scroll="scrollL" @scrolltoupper="upper" @scrolltolower="lower">
+								<view class="item_box">
+									<view class="item_box_box">
+										<view class="" style="color: #FF7E00;">
+											<text class="item_count">{{hjz.wd}}</text>
+											<text class="item_unit">℃</text>
+										</view>
+										<view class="item_title">
+											温度
+										</view>
+									</view>
+								</view>
+								<view class="item_box" >
+									<view class="item_box_box">
+										<view class="" style="color:#00BAFF;">
+											<text class="item_count">{{hjz.sd}}</text>
+											<text class="item_unit">%RH</text>
+										</view>
+										<view class="item_title">
+											湿度
+										</view>
+									</view>
+								</view>
+								<view class="item_box" >
+									<view class="item_box_box">
+										<view class="" style="color: #00DC87;">
+											<text class="item_count">{{hjz.tvoc}}</text>
+											<text class="item_unit">ug/m³</text>
+										</view>
+										<view class="item_title">
+											TVOC
+										</view>
+									</view>
+								</view>
+								<view class="item_box">
+									<view class="item_box_box">
+										<view class="" style="color: #FFA800;">
+											<text class="item_count">{{hjz.ch20}}</text>
+											<text class="item_unit">ug/m³</text>
+										</view>
+										<view class="item_title">
+											甲醛
+										</view>
+									</view>
+								</view>
+								<view class="item_box" >
+									<view class="item_box_box">
+										<view class="" style="color: #08ECE9;">
+											<text class="item_count">{{hjz.pm10}}</text>
+											<text class="item_unit">ug/m³</text>
+										</view>
+										<view class="item_title">
+											PM10
+										</view>
+									</view>
+								</view>
+								<view class="item_box" >
+									<view class="item_box_box">
+										<view class="" style="color: #84CF0C;">
+											<text class="item_count">{{hjz.pm25}}</text>
+											<text class="item_unit">ug/m³</text>
+										</view>
+										<view class="item_title">
+											PM2.5
+										</view>
+									</view>
+								</view>
+								<view class="item_box">
+									<view class="item_box_box">
+										<view class="" style="color: #FF683F;">
+											<text class="item_count">{{hjz.co2}}</text>
+											<text class="item_unit">ppm</text>
+										</view>
+										<view class="item_title">
+											CO2
+										</view>
+									</view>
+								</view>
+						</scroll-view>
+						<view class="scroll_point">
+							<block v-for="i in 2" :key="i">	
+								<view class="point_default" :class="[i==tabInd?'active_default':'']"> </view>
+							</block> 
+						</view>
+					</view> 
+				</view>
+				<view class="contl_mjj">
+					<view class="show_temp_title">
+						<view style="width: 30%;">控制密集架 </view>
+						<view style="width: 70%;">
+							<image src="../../static/line.png" mode="aspectFit" style="height: 20upx;width: 90%;"></image>
+						</view>
+					</view>
+					<view class="mjj_move">
+						<view class="mjj_move_item" @click="left()"> 
+							<image src="../../static/option-icon/left.png" mode="aspectFit" class="left"></image> 
+							<view class="text">左移</view>
+						</view> 
+						<view class="mjj_move_item" @click="stop()"> 
+							<image src="../../static/option-icon/stop.png" mode="aspectFit" class="stop" v-if="isMove"></image>	
+							<image src="../../static/option-icon/start.png" mode="aspectFit" class="start" v-else></image>  
+							<view class="text" v-if="isMove">移动中</view>
+							<view class="text" v-else>停止</view>
+						</view>
+						<view class="mjj_move_item" @click="right()">
+							<image src="../../static/option-icon/right.png" mode="aspectFit" class="right"></image> 
+							<view class="text">右移</view>
+						</view>
+					</view>
+					<view class="mjj_fun_contrl">
+						<view class="mjj_move_item" @click="ventilation()">
+							<image src="../../static/option-icon/ventilation.png" mode="aspectFit" class="ventilation"></image> 
+							<view class="text">通风</view>
+						</view>
+						<view class="mjj_move_item" @click="left()">
+							<image src="../../static/option-icon/openSh.png" mode="aspectFit" class="openSh"></image> 
+							<view class="text">开架</view>
+						</view>
+						<view class="mjj_move_item" @click="closeTask()">
+							<image src="../../static/option-icon/closeSh.png" mode="aspectFit" class="closeSh"></image> 
+							<view class="text">合架</view>
+						</view>
+						<view class="mjj_move_item" @click="locked()">
+							<image src="../../static/option-icon/lock.png" mode="aspectFit" class="lock"></image> 
+							<view class="text" v-if="isLocked">锁定</view>
+							<view class="text" v-else>解锁</view>
+						</view> 
+					</view>
+				</view>
+				<view class="app_address">
+					智慧档案管理系统
+				</view>
+			</view>
+		</view>  
+</template> 
+<script> 
+	export default {   
+		data() {
+			return {
+				tabInd:0,
+				statusBarHeight:0,
+				bodyHeight:0, 
+				state:'', 
+				isLocked: true, 
+				// 库房
+				storeroomArray:[],
+				storeroomIndex:0,
+				storeroomNum:0,
+				storerooms:[],
+				// 区
+				regions:[],
+				// 区名称
+				regionArray:[],
+				regionIndex:0,
+				regionNum:0,	
+				// 列
+				cols:[],
+				colIndex:0,
+				 // 移动方向
+				 direction:'',
+				 // 当前状态
+				 curState:'',
+				 isMove:false,
+				hjz:{
+					wd: 0,
+					sd: 0,
+					co2: 0,
+					ch20: 0,
+					pm10: 0,
+					pm25: 0,
+					tvoc: 0,
+				}, 
+				timeer:null,
+			};
+		},
+		watch: {
+			storeroomNum: function(newVal, oldVal) {
+				uni.setStorage({
+				    key: 'fkStoredId',
+				    data: newVal,
+				    success: function () {
+				        // console.log('success');
+				    }
+				});
+			},
+		},
+		onLoad() {
+			// 获取手机状态栏高度
+			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
+			// 获取实际body高度、宽度
+			this.bodyHeight=uni.getSystemInfoSync()['windowHeight']-this.statusBarHeight-48; 
+ 
+			this.selectStoreRoom();
+		},
+		methods: { 
+			onPageJump(){ 
+				uni.navigateTo({
+					url: '../search/search' 
+				}); 
+			},
+			scrollL(e){
+				let scroll_x=e.detail.scrollLeft; 
+				const query = uni.createSelectorQuery().in(this);
+				query.select('.temp_shelf .item_box').boundingClientRect(data => { 
+					var int=Math.floor(scroll_x/(data.width*3));
+					this.tabInd=int; 
+				}).exec(); 
+			},
+			upper(e){
+				this.tabInd=0;
+			},
+			lower(e){
+				this.tabInd=1;
+			}, 
+			// 查询所有库房
+			selectStoreRoom:function(){
+				let _this=this;
+				_this.submitAjax('environmentmodule/wkStoTbStore/selectWkStoTbStore',null, 'GET', function(res) {
+					_this.storeroomArray=[];
+					_this.storerooms=res.data.rows; 
+					for(let item of res.data.rows){
+						_this.storeroomArray.push(item.storeName);
+					} 
+					_this.storeroomNum=res.data.rows[0].id; 
+					_this.selectRegion(_this.storeroomNum); 
+				})
+			},
+			// 库房改变
+			storeroomChange:function(e){
+				let _this=this;
+				_this.storeroomNum=_this.storerooms[e.target.value].id;  
+				_this.storeroomIndex=e.target.value;
+				_this.selectRegion(_this.storeroomNum);
+			},
+			// 查询所有的区
+			selectRegion:function  (fkStoreId) { 
+				let _this=this;
+				_this.submitAjax('storeroommodule/stoTbRegion/selectByBind?fkStoreId='+fkStoreId,null, 'GET', function(res) {
+					_this.regionArray=[];
+					_this.regions=res.data.rows; 
+					for(let item of _this.regions){
+						_this.regionArray.push(item.regionName);
+					} 
+					_this.regionNum=res.data.rows[0].regionNum; 
+					_this.getCols(_this.regionNum);
+					// 获取温湿度、状态
+					_this.timeer=setInterval(()=>{
+						_this.timingGetState()
+					},3000);  
+				})
+			},
+			regionChange:function(e){
+				let _this=this;
+				_this.regionNum=_this.regions[e.target.value].regionNum;  
+				_this.regionIndex=e.target.value;
+				_this.getCols(_this.regionNum);
+			},
+			// 根据区获取列
+			getCols:function(qu_num){
+				let _this=this;
+				_this.cols=[];   
+				let region={};
+				for(let item of _this.regions){
+					if(item.regionNum==qu_num){
+						region=item;
+						break;
+					}
+				}
+				for(let i=1;i<=region.cols;i++){
+					if((region.gdlType=='left') || (region.gdlType=='right')){
+						if(i==region.cols){
+							break;
+						}
+					} 
+					_this.cols.push(i); 
+				} 
+				_this.colNum=_this.cols[0];	
+			},
+			colChange:function(e){
+				let _this=this;
+				_this.colNum=_this.cols[e.target.value];
+				_this.colIndex=e.target.value;
+			},	
+			timingGetState:function(){
+				let _this =this; 
+				let qu_num=_this.regionNum;
+				_this.submitAjax(_this.$mjjUrl+'denseShelves/getstates?quNum='+qu_num,null,'POST',function(res){ 
+					if(res.data.state && res.data.row){ 
+						let data=JSON.parse(res.data.row); 
+						_this.state=data.message; 	
+						// console.log(_this.state) 
+						if(_this.state=='禁止'|| _this.state=='锁定'
+							|| _this.state=='到位'||_this.state=='机械锁定'||_this.state=='停止'){
+								_this.isMove=false; 
+						}
+						if(_this.state=='正在右移中'||_this.state=='正在左移中'){ 
+							_this.isMove=true; 
+						} 
+					}
+				})
+				_this.getGethumiture(qu_num); 
+			},
+			// 获取温湿度
+			getGethumiture:function(qu_num){
+				let _this=this;
+				_this.submitAjax(_this.$mjjUrl+'countmodule/storeAndRegionCount/getNewHumiture?quNum='+qu_num,null,'POST',function(res){ 
+					if(res.data.state && res.data.row){
+						let data=res.data.row;	
+						// console.log(data)
+						_this.hjz.wd=data.wd.toFixed(1)?data.wd.toFixed(1):0; 
+						_this.hjz.sd=data.sd.toFixed(1)?data.sd.toFixed(1):0;
+						_this.hjz.tvoc=data.tvoc.toFixed(1)?data.tvoc.toFixed(1):0; 
+						_this.hjz.co2=data.co2.toFixed(1)?data.co2.toFixed(1):0;
+						_this.hjz.ch20=data.ch20.toFixed(1)?data.ch20.toFixed(1):0;
+						_this.hjz.pm10=data.pm10.toFixed(1)?data.pm10.toFixed(1):0;
+						_this.hjz.pm25=data.pm25.toFixed(1)?data.pm25.toFixed(1):0; 
+					} 
+				})
+			},
+			// 解锁 锁定
+			locked: function () {
+				let _this=this;	
+				let qu_num=_this.regionNum;
+				if (_this.isLocked) { 
+					_this.submitAjax(_this.$mjjUrl+'denseShelves/Unlock?quNum='+qu_num,null,'POST',function(res){
+						// console.log(res)
+						if(res.data.state && res.data.row){
+							let data=JSON.parse(res.data.row);
+							_this.isLocked=false; 
+						}else{
+							uni.showToast({
+								title:res.data.msg,
+								icon:'none'
+							})
+						} 
+					}) 
+				}else {  
+					_this.submitAjax(_this.$mjjUrl+'denseShelves/locking?quNum='+qu_num,null,'POST',function(res){
+						// console.log(res)
+						if(res.data.state && res.data.row){
+							let data=JSON.parse(res.data.row);
+							_this.isLocked=true; 
+						}else{
+							uni.showToast({
+								title:res.data.msg,
+								icon:'none'
+							})
+						} 
+					})
+				}
+			},
+			// 自动开架
+			opTask: function () {
+				let _this=this; 
+				_this.submitAjax(_this.$mjjUrl+'denseShelves/openshelf?quNum='+_this.regionNum,null,'POST',function(res){
+					if(res.data.state && res.data.row){
+						// let data=JSON.parse(); 
+					}else{
+						uni.showToast({
+							title:res.data.msg,
+							icon:'none'
+						})
+					} 
+				})  
+			},
+			// 合架
+			closeTask: function () {
+				let _this=this; 
+				_this.submitAjax(_this.$mjjUrl+'denseShelves/merge?quNum='+_this.regionNum,null,'POST',function(res){
+					if(res.data.state && res.data.row){
+						// let data=JSON.parse(); 
+					}else{
+						uni.showToast({
+							title:res.data.msg,
+							icon:'none'
+						})
+					} 
+				})
+			}, 
+			// 通风
+			ventilation: function () {
+				let _this=this; 
+				_this.submitAjax(_this.$mjjUrl+'denseShelves/aeration?quNum='+_this.regionNum,null,'POST',function(res){
+					if(res.data.state && res.data.row){
+						// let data=JSON.parse(); 
+					}else{
+						uni.showToast({
+							title:res.data.msg,
+							icon:'none'
+						})
+					} 
+				})
+			}, 
+			// 左移
+			left: function () {
+				let _this=this;   
+				_this.submitAjax(_this.$mjjUrl+'denseShelves/leftmove?quNum='+_this.regionNum+'&column='+_this.colNum,null,'POST',function(res){
+					if(res.data.state && res.data.row){
+						// let data=JSON.parse(); 
+					}else{
+						uni.showToast({
+							title:res.data.msg,
+							icon:'none'
+						})
+					} 
+				});
+			},
+			// 停止
+			stop: function() {
+				let _this=this;
+				 _this.isMove=false;
+				_this.submitAjax(_this.$mjjUrl+'denseShelves/stop?quNum='+_this.regionNum,null,'POST',function(res){
+					if(res.data.state && res.data.row){
+						// let data=JSON.parse(); 
+					}else{
+						uni.showToast({
+							title:res.data.msg,
+							icon:'none'
+						})
+					} 
+				}) 
+			},
+			// 右移 
+			right: function () {
+				let _this=this; 
+				// _this.direction='right';
+				_this.submitAjax(_this.$mjjUrl+'denseShelves/rightmove?quNum='+_this.regionNum+'&column='+_this.colNum,null,'POST',function(res){
+					if(res.data.state && res.data.row){
+						// let data=JSON.parse(); 
+					}else{
+						uni.showToast({
+							title:res.data.msg
+						})
+					} 
+				})
+			}, 
+		}
+	}
+</script>
+
+<style> 
+   @import "option.css";
+</style>

@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/option/option",
+    "pages/search/search",
+    "pages/index/header",
+    "pages/index/fileDetails"
+  ],
+  "subPackages": [],
+  "window": {
+    "enablePullDownRefresh": true
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap17.json"
+}

@@ -1,0 +1,129 @@
+{
+    "pages" : [ 	
+		//  pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+		    "path" : "pages/login/login" ,
+			"style":{
+				 "app-plus": {"titleNView": false} //去掉顶部导航
+			}
+		}, 
+		{
+		    "path" : "pages/option/option",
+		    "style" : {
+				 "app-plus": {"titleNView": false} //去掉顶部导航 
+		    }
+		},
+		{
+			"path" : "pages/search/search",
+			"style" : {
+				 "app-plus": {"titleNView": false} //去掉顶部导航
+			 }
+		}, 
+		{
+		    "path" : "pages/index/header",
+			"style":{
+				 "app-plus": {"titleNView": false} //去掉顶部导航
+			}
+		}, 
+		{
+		    "path" : "pages/index/fileDetails",
+		    "style" : {
+		        "navigationBarTitleText" : "档案详情",
+		        "navigationBarBackgroundColor" : "#1C87FF",
+		        "navigationBarTextStyle" : "white"
+		    }
+		}
+  //       {
+  //           "path" : "pages/personalCenter/personalCenter",
+  //           "style" : {
+		// 		 "navigationBarTitleText" : "个人中心",
+		// 		"navigationBarBackgroundColor" : "#1b82d2",
+		// 		"navigationBarTextStyle" : "white"
+		// 	}
+  //       },
+		// {
+		//     "path" : "pages/personalCenter/borrowHistory",
+		//     "style" : {
+		// 		 "navigationBarTitleText" : "已借阅",
+		// 		"navigationBarBackgroundColor" : "#1b82d2",
+		// 		"navigationBarTextStyle" : "white"
+		// 	}
+		// },
+		// {
+		// 	"path" : "pages/personalCenter/borrowProcess",
+		// 	"style" : {
+		// 		 "navigationBarTitleText" : "借阅",
+		// 		"navigationBarBackgroundColor" : "#1b82d2",
+		// 		"navigationBarTextStyle" : "white"
+		// 	}
+		// },
+		// {
+		//     "path" : "pages/personalCenter/return",
+		//     "style" : {
+		// 		 "navigationBarTitleText" : "待归还",
+		// 		"navigationBarBackgroundColor" : "#1b82d2",
+		// 		"navigationBarTextStyle" : "white"
+		// 	}
+		// },
+		// {
+		//     "path" : "pages/personalCenter/feedback",
+		//     "style" : {
+		// 		 "navigationBarTitleText" : "意见反馈",
+		// 		"navigationBarBackgroundColor" : "#1b82d2",
+		// 		"navigationBarTextStyle" : "white"
+		// 	}
+		// },
+		// {
+		//     "path" : "pages/personalCenter/help",
+		//     "style" : {
+		// 		 "navigationBarTitleText" : "帮助",
+		// 		"navigationBarBackgroundColor" : "#1b82d2",
+		// 		"navigationBarTextStyle" : "white"
+		// 	}
+		// }
+    ],
+    "globalStyle" : {
+        // "navigationBarTextStyle" : "black",
+        // "navigationBarTitleText" : "档案管理",
+		// "navigationStyle": "custom",
+        // "navigationBarBackgroundColor" : "#F8F8F8",
+        // "backgroundColor" : "#08ac96",
+        // "backgroundTextStyle" : "dark",
+        "enablePullDownRefresh" : true
+    },
+    // "tabBar" : {
+        // "color" : "#787878",
+        // "selectedColor" : "#1C87FF",
+        // "backgroundColor" : "white",
+        // "list" : [
+			// {
+			//     "text" : "控制架体",
+			//     "iconPath" : "static/contrl_icon_default.png",
+			//     "pagePath" : "pages/option/option",
+			//     "selectedIconPath" : "static/contrl_icon.png"
+			// },
+   //          {
+   //              "text" : "查询档案",
+   //              "iconPath" : "static/search_icon.png",
+   //              "pagePath" : "pages/index/index",
+   //              "selectedIconPath" : "static/search_icon_active.png"
+   //          } 
+           /* {
+                "text" : "个人中心",
+                "iconPath" : "static/img/mine.png",
+                "pagePath" : "pages/personalCenter/personalCenter",
+                "selectedIconPath" : "static/img/c-mine.png"
+            } */
+        // ]
+    // },
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}

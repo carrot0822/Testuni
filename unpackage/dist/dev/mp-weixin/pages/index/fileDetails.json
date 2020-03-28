@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "档案详情",
+  "navigationBarBackgroundColor": "#1C87FF",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "uni-load-more": "/components/uni-load-more"
+  }
+}
