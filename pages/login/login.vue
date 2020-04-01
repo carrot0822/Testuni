@@ -74,10 +74,18 @@
 							});
 						} else {
 							//登录失败弹窗
-							uni.showToast({
-								title: res.data.msg,
-								image: '../../static/img/shibai.png'
-							})
+							uni.showModal({
+								title: '提示',
+								content: res.data.msg,
+								showCancel: false,
+								success: function(res) {
+									if (res.confirm) {
+										console.log('用户点击确定');
+									} else if (res.cancel) {
+										console.log('用户点击取消');
+									}
+								}
+							});
 						}
 					})
 			},

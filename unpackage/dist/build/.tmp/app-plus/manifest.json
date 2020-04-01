@@ -4,7 +4,7 @@
     "iPhone",
     "iPad"
   ],
-  "id": "__UNI__A894F1F",
+  "id": "__UNI__3FDB8B5",
   "name": "档案管理1",
   "version": {
     "name": "1.0.0",
@@ -99,6 +99,7 @@
       "plugins": {
         "maps": {},
         "speech": {},
+        "ad": {},
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"
@@ -108,7 +109,7 @@
     },
     "allowsInlineMediaPlayback": true,
     "uni-app": {
-      "compilerVersion": "2.4.6",
+      "compilerVersion": "2.6.5",
       "control": "v8",
       "nvueCompiler": "uni-app",
       "renderer": "auto",
@@ -116,5 +117,6 @@
         "flex-direction": "column"
       }
     }
-  }
+  },
+  "usingComponents": {}
 }

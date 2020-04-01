@@ -106,6 +106,11 @@
 		onLoad() {
 			this.selectRegion(); 
 		},
+		destroyed(){
+			// 页面销毁时清除定时器
+			console.log(this.timeer,'查看定时器编号')
+			clearInterval(this.timeer)
+		},
 		methods:{
 			// 查询所有的区
 			selectRegion:function  () {

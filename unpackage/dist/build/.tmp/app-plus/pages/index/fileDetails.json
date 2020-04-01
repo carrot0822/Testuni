@@ -2,6 +2,7 @@
   "navigationBarTitleText": "档案详情",
   "navigationBarBackgroundColor": "#1C87FF",
   "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "uni-load-more": "/components/uni-load-more"
   }

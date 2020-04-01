@@ -1,6 +1,6 @@
 {
     "name" : "档案管理1",
-    "appid" : "__UNI__A894F1F",
+    "appid" : "__UNI__3FDB8B5",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -31,7 +31,8 @@
             /* ios打包配置 */
             "sdkConfigs" : {
                 "maps" : {},
-                "speech" : {}
+                "speech" : {},
+                "ad" : {}
             },
             "icons" : {
                 "ios" : {

@@ -8,7 +8,7 @@
 			}
 		}, 
 		{
-		    "path" : "pages/option/option",
+		    "path" : "pages/option/option", // home页面
 		    "style" : {
 				 "app-plus": {"titleNView": false} //去掉顶部导航 
 		    }
@@ -20,7 +20,7 @@
 			 }
 		}, 
 		{
-		    "path" : "pages/index/header",
+		    "path" : "pages/index/header", // 欢迎页面
 			"style":{
 				 "app-plus": {"titleNView": false} //去掉顶部导航
 			}
@@ -30,7 +30,8 @@
 		    "style" : {
 		        "navigationBarTitleText" : "档案详情",
 		        "navigationBarBackgroundColor" : "#1C87FF",
-		        "navigationBarTextStyle" : "white"
+		        "navigationBarTextStyle" : "white",
+				"enablePullDownRefresh":true
 		    }
 		}
   //       {
@@ -89,7 +90,7 @@
         // "navigationBarBackgroundColor" : "#F8F8F8",
         // "backgroundColor" : "#08ac96",
         // "backgroundTextStyle" : "dark",
-        "enablePullDownRefresh" : true
+        //"enablePullDownRefresh" : true
     },
     // "tabBar" : {
         // "color" : "#787878",
