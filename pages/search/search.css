@@ -32,15 +32,16 @@
  	padding: 16upx 20upx 16upx 0;
  	position: absolute;
  	left: 16upx;
- 	top: 4upx;
+ 	top: 50%;
  	z-index: 10;
+	transform: translateY(-50%);
  }
   
  .header_box1 .cancel_btn { 
  	width:10%; 
  	position: absolute;
  	right: 4%;
- 	line-height: 80upx;
+ 	line-height: 70upx;
  	padding-left: 36upx;
  	font-size: 32upx; 
  	color: #656565;    
@@ -137,7 +138,9 @@
  }
 
  .search-list-box{
- 	margin-top: 30upx;  
+ 	margin-top: 30upx; 
+	 height: 40vh;
+	 overflow: scroll;
  }
  .search-list-box .search-list{
  	margin: 0 auto;

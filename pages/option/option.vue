@@ -545,7 +545,7 @@
 							duration: 2000
 						});
 						if(!_this.isLocked){
-							_this._locked()
+							//_this._locked()
 						}
 					} else {
 						uni.showModal({
@@ -574,7 +574,7 @@
 							duration: 2000
 						});
 						if(!_this.isLocked){
-							_this._locked()
+							//_this._locked()
 						}
 					} else {
 						uni.showModal({
@@ -612,7 +612,7 @@
 									title: '正在左移',
 									duration: 2000
 								});
-								_this._locked()
+								//_this._locked()
 							} else {
 								uni.showModal({
 									title: '提示',
@@ -637,7 +637,7 @@
 							duration: 2000
 						});
 						if(!_this.isLocked){
-							_this._locked()
+							//_this._locked()
 						}
 						
 					} else {
@@ -677,7 +677,7 @@
 									title: '正在右移',
 									duration: 2000
 								});
-								_this._locked()
+								//_this._locked()
 								// let data=JSON.parse(); 
 							} else {
 								uni.showModal({

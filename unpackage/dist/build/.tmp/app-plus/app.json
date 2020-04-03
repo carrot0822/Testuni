@@ -6,9 +6,7 @@
     "pages/index/header",
     "pages/index/fileDetails"
   ],
-  "window": {
-    "enablePullDownRefresh": true
-  },
+  "window": {},
   "nvueCompiler": "uni-app",
   "renderer": "auto",
   "splashscreen": {

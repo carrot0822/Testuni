@@ -158,6 +158,9 @@
 					})
 				}
 			},
+			filterList(){
+				
+			},
 			// 根据关键字查询
 			selectArch: function() {
 				let _this = this;
@@ -189,6 +192,12 @@
 							var resjson = msg.region;
 							var dir = locate.direction;
 							var cols = locate.colNum;
+							
+							if(dir==="左"){
+							 	dir="left"; 
+							 }else if(dir==="右"){
+							 	dir="right"; 
+							 }  
 							// var gdlType;
 							// if(resjson.gdlType==="left"){
 							// 	gdlType="left"; 

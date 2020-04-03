@@ -1,9 +1,12 @@
 <template> 
   <view class="content" :style="{ paddingTop: statusBarHeight + 'px'}" style="background: #FFF;">
+	  <!--
   		<view v-if="searchText" class="header_box2">
+			
   			<view class="address_select" @click="goBack()">
 				<image src="../../static/back2.png" mode="aspectFit" style="width: 28upx;height: 28upx;"></image>
   			</view> 
+			
   			<view class="search">   
 				<input maxlength="20" type="text" focus confirm-type="search" @confirm="searchStart()"
 					placeholder="请输入关键字查询档案" v-model.trim="searchText"/> 
@@ -11,12 +14,17 @@
 				<image src="../../static/del.png" mode="aspectFit" @click="searchText='';searchList=[];" class="del-icon"></image>
   			</view>
   		</view>  
-		
-		 <view v-else  class="header_box1">
+		-->
+		 <view  class="header_box1">
 			<view class="search">  
+				
 				<input maxlength="20" type="text" :focus="isFocus" confirm-type="search" @confirm="searchStart()"
 					placeholder="请输入关键字查询档案" v-model.trim="searchText"/> 
+					
+				<image src="../../static/search_icon.png" mode="aspectFit"  class="search-icon"></image>
+				<!--
 				<image src="../../static/search_icon.png" mode="aspectFit" @click="searchStart()" class="search-icon"></image>
+				-->
 				<!-- <image src="../../static/del.png" mode="aspectFit" @click="searchStart()" class="del-icon"></image> -->
 			</view>
 			<view class="cancel_btn" @click="goBack()">
@@ -28,7 +36,7 @@
 				<view style="color: #B5B5B5;font-size: 34upx;width:90%;padding: 10upx 30upx;">
 					查询结果
 				</view>
-				 <template v-if="searchList.length>0">
+				 <template class="listWrap" v-if="searchList.length>0">
 					 <view v-for="(item,index) in searchList" :key="index" @click="keywordsClick(item)">
 						<view class="search-list">
 							<text>{{index+1}}、</text>
