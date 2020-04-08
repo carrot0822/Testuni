@@ -168,7 +168,7 @@
 					</view>
 				</view>
 				<view class="mjj_move">
-					<view class="mjj_move_item" @click="leftMove()">
+					<view class="mjj_move_item" @click="left()">
 						<image src="../../static/option-icon/left.png" mode="aspectFit" class="left"></image>
 						<view class="text">左移</view>
 					</view>
@@ -178,7 +178,7 @@
 						<view class="text" v-if="isMove">移动中</view>
 						<view class="text" v-else>停止</view>
 					</view>
-					<view class="mjj_move_item" @click="rightMove()">
+					<view class="mjj_move_item" @click="right()">
 						<image src="../../static/option-icon/right.png" mode="aspectFit" class="right"></image>
 						<view class="text">右移</view>
 					</view>
@@ -188,7 +188,7 @@
 						<image src="../../static/option-icon/ventilation.png" mode="aspectFit" class="ventilation"></image>
 						<view class="text">通风</view>
 					</view>
-					<view class="mjj_move_item" @click="leftMove()">
+					<view class="mjj_move_item" @click="left()">
 						<image src="../../static/option-icon/openSh.png" mode="aspectFit" class="openSh"></image>
 						<view class="text">开架</view>
 					</view>
@@ -263,6 +263,7 @@
 		},
 		onLoad() {
 			// 获取手机状态栏高度
+			this.test()
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
 			// 获取实际body高度、宽度
 			this.bodyHeight = uni.getSystemInfoSync()['windowHeight'] - this.statusBarHeight - 48;
@@ -442,18 +443,6 @@
 						let data = JSON.parse(res.data.row);
 						_this.state = data.message;
 						// console.log(_this.state) 
-						let unlockArr = ['正在左移中','正在右移中','解除']
-						let lockArr = ['禁止','锁定','到位','机械锁定','停止','门禁']
-							
-						if(unlockArr.includes(data.message)){
-							_this.isLocked = false
-							
-						}else if(lockArr.includes(data.message)){
-							_this.isLocked = true
-							
-						}
-						
-						
 						if (_this.state == '禁止' || _this.state == '锁定' ||
 							_this.state == '到位' || _this.state == '机械锁定' || _this.state == '停止') {
 							_this.isMove = false;
@@ -671,6 +660,7 @@
 			},
 			// 右移 
 			right: function() {
+
 				let _this = this;
 				if (_this.isLocked) {
 					uni.showModal({
@@ -704,42 +694,89 @@
 
 			},
 			/*------ API ------*/
-
-			
+			// 解锁密集架
+			_unlocked() {
+				let _this = this;
+				let qu_num = _this.regionNum;
+				_this.submitAjax(_this.$mjjUrl + 'denseShelves/Unlock?quNum=' + qu_num, null, 'POST', function(res) {
+					if (res.data.state && res.data.row) {
+						let data = JSON.parse(res.data.row);
+						_this.isLocked = false;
+						console.log('密集架已解除锁定')
+					} else {
+						uni.showModal({
+							title: '提示',
+							content: res.data.msg,
+							showCancel: false,
+						});
+					}
+				})
+			},
+			// 锁定密集架
+			_locked() {
+				let _this = this;
+				let qu_num = _this.regionNum;
+				_this.submitAjax(_this.$mjjUrl + 'denseShelves/locking?quNum=' + qu_num, null, 'POST', function(res) {
+					// console.log(res)
+					if (res.data.state && res.data.row) {
+						let data = JSON.parse(res.data.row);
+						_this.isLocked = true;
+						console.log('操作成功,密集架已被锁定')
+					} else {
+						uni.showModal({
+							title: '提示',
+							content: res.data.msg,
+							showCancel: false,
+						});
+					}
+				})
+			},
+			// 右移
+			_right() {
+				let _this = this
+				let qu_num = _this.regionNum;
+				_this.submitAjax(_this.$mjjUrl + 'denseShelves/rightmove?quNum=' + _this.regionNum + '&column=' + _this.colNum,
+					null, 'POST',
+					function(res) {
+						if (res.data.state && res.data.row) {
+							// let data=JSON.parse(); 
+						} else {
+							uni.showModal({
+								title: '提示',
+								content: res.data.msg,
+								showCancel: false,
+							});
+						}
+					})
+			},
 			// 判定密集架状态
-			rightMove(){
-				this._jugeState().then(()=>{
-					console.log('这个right执行')
-					this.right()
+			test(){
+				let _this = this;
+				let qu_num = _this.regionNum;
+					
+				axios(_this.$mjjUrl + 'denseShelves/getstates?quNum=2',null,'POST').then((res)=>{
+					console.log(res,'测试是否成功')
 				})
 			},
-			leftMove(){
-				this._jugeState().then(()=>{
-					console.log('这个left执行')
-					this.left()
+			_jugeLock() {
+				let _this = this;
+				let qu_num = _this.regionNum;
+				_this.submitAjax(_this.$mjjUrl + 'denseShelves/getstates?quNum=' + qu_num, null, 'POST', function(res) {
+					if (res.data.state && res.data.row) {
+						let data = JSON.parse(res.data.row);
+						_this.state = data.message;
+						// console.log(_this.state) 
+						if (_this.state == '禁止' || _this.state == '锁定' ||
+							_this.state == '到位' || _this.state == '机械锁定' || _this.state == '停止' || _this.state == '门禁') {
+							
+							_this.isLocked = true
+						}
+						if (_this.state == '正在右移中' || _this.state == '正在左移中') {
+							_this.isLocked = false
+						}
+					}
 				})
-			},
-			// 判定是否锁定
-			_jugeState:async function(){
-				let qu_num = this.regionNum;
-				let res = await axios(this.$mjjUrl + 'denseShelves/getstates?quNum=' + qu_num, null, 'POST')
-				// 请求失败的处理情况
-				let data = JSON.parse(res.data.row);
-				let unlockArr = ['正在左移中','正在右移中','解除']
-				let lockArr = ['禁止','锁定','到位','机械锁定','停止','门禁']
-					
-				if(unlockArr.includes(data.message)){
-					this.isLocked = false
-					
-				}else if(lockArr.includes(data.message)){
-					this.isLocked = true
-					
-				}
-				
-				console.log('这个先执行')
-			},
-			
-			
+			}
 		}
 	}
 </script>
