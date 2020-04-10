@@ -53,6 +53,7 @@
 
 <script>
 	import uniLoadMore from '@/components/uni-load-more.vue';
+	import axios from '../../utis/axios.js'
 	export default {
 		components: {
 			uniLoadMore
@@ -203,7 +204,7 @@
 							// 	gdlType="left"; 
 							// }else if(resjson.gdlType==="right"){
 							// 	gdlType="right"; 
-							// }  
+							// }  						
 							_this.submitAjax(_this.$mjjUrl + 'denseShelves/openframe?quNum=' + locate.fkRegionNum + '&column=' +
 								cols + '&section=' + locate.divNum + '&layer=' + locate.laysNum + '&direction=' + dir, null, 'POST',
 								function(res) {

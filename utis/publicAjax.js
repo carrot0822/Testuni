@@ -9,17 +9,18 @@ const ajax = (url, data, method, success) => {
 			baseUrl = res.data;
 		}
 	});
-
+	baseUrl = 'http://' + baseUrl + '/';
+	/*
 	if (baseUrl) {
 		console.log(baseUrl,'设置服务器')
 		baseUrl = 'http://' + baseUrl + '/';
 
 	} else {
 		baseUrl = ApiUrl;
-	}
+	}*/
 
 
-	//console.log(baseUrl)
+	console.log(baseUrl)
 	if (method == undefined) {
 		method = 'POST';
 	}

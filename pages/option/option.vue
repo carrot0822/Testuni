@@ -188,7 +188,7 @@
 						<image src="../../static/option-icon/ventilation.png" mode="aspectFit" class="ventilation"></image>
 						<view class="text">通风</view>
 					</view>
-					<view class="mjj_move_item" @click="leftMove()">
+					<view class="mjj_move_item" @click="openFrame()">
 						<image src="../../static/option-icon/openSh.png" mode="aspectFit" class="openSh"></image>
 						<view class="text">开架</view>
 					</view>
@@ -420,6 +420,7 @@
 					}
 					_this.cols.push(i);
 				}
+				console.log(this.regions,'查询区数据')
 				_this.colNum = _this.cols[0];
 			},
 			colChange: function(e) {
@@ -437,7 +438,7 @@
 			timingGetState: function() {
 				let _this = this;
 				let qu_num = _this.regionNum;
-				_this.submitAjax(_this.$mjjUrl + 'denseShelves/getstates?quNum=' + qu_num, null, 'POST', function(res) {
+				_this.submitAjax( 'denseShelves/getstates?quNum=' + qu_num, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						let data = JSON.parse(res.data.row);
 						_this.state = data.message;
@@ -468,7 +469,7 @@
 			// 获取温湿度
 			getGethumiture: function(qu_num) {
 				let _this = this;
-				_this.submitAjax(_this.$mjjUrl + 'countmodule/storeAndRegionCount/getNewHumiture?quNum=' + qu_num, null, 'POST',
+				_this.submitAjax( 'countmodule/storeAndRegionCount/getNewHumiture?quNum=' + qu_num, null, 'POST',
 					function(res) {
 						if (res.data.state && res.data.row) {
 							let data = res.data.row;
@@ -488,7 +489,7 @@
 				let _this = this;
 				let qu_num = _this.regionNum;
 				if (_this.isLocked) {
-					_this.submitAjax(_this.$mjjUrl + 'denseShelves/Unlock?quNum=' + qu_num, null, 'POST', function(res) {
+					_this.submitAjax( 'denseShelves/Unlock?quNum=' + qu_num, null, 'POST', function(res) {
 						// console.log(res)
 						if (res.data.state && res.data.row) {
 							let data = JSON.parse(res.data.row);
@@ -509,7 +510,7 @@
 						}
 					})
 				} else {
-					_this.submitAjax(_this.$mjjUrl + 'denseShelves/locking?quNum=' + qu_num, null, 'POST', function(res) {
+					_this.submitAjax( 'denseShelves/locking?quNum=' + qu_num, null, 'POST', function(res) {
 						// console.log(res)
 						if (res.data.state && res.data.row) {
 							let data = JSON.parse(res.data.row);
@@ -534,7 +535,7 @@
 			// 自动开架
 			opTask: function() {
 				let _this = this;
-				_this.submitAjax(_this.$mjjUrl + 'denseShelves/openshelf?quNum=' + _this.regionNum, null, 'POST', function(res) {
+				_this.submitAjax( 'denseShelves/openshelf?quNum=' + _this.regionNum, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						// let data=JSON.parse(); 
 					} else {
@@ -550,7 +551,7 @@
 			// 合架
 			closeTask: function() {
 				let _this = this;
-				_this.submitAjax(_this.$mjjUrl + 'denseShelves/merge?quNum=' + _this.regionNum, null, 'POST', function(res) {
+				_this.submitAjax( 'denseShelves/merge?quNum=' + _this.regionNum, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						// let data=JSON.parse(); 
 						uni.showToast({
@@ -579,7 +580,7 @@
 			// 通风
 			ventilation: function() {
 				let _this = this;
-				_this.submitAjax(_this.$mjjUrl + 'denseShelves/aeration?quNum=' + _this.regionNum, null, 'POST', function(res) {
+				_this.submitAjax( 'denseShelves/aeration?quNum=' + _this.regionNum, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						// let data=JSON.parse(); 
 						uni.showToast({
@@ -616,7 +617,7 @@
 						showCancel: false,
 					});
 				} else {
-					_this.submitAjax(_this.$mjjUrl + 'denseShelves/leftmove?quNum=' + _this.regionNum + '&column=' + _this.colNum,
+					_this.submitAjax( 'denseShelves/leftmove?quNum=' + _this.regionNum + '&column=' + _this.colNum,
 						null, 'POST',
 						function(res) {
 							if (res.data.state && res.data.row) {
@@ -642,7 +643,7 @@
 			stop: function() {
 				let _this = this;
 				_this.isMove = false;
-				_this.submitAjax(_this.$mjjUrl + 'denseShelves/stop?quNum=' + _this.regionNum, null, 'POST', function(res) {
+				_this.submitAjax( 'denseShelves/stop?quNum=' + _this.regionNum, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						// let data=JSON.parse(); 
 						uni.showToast({
@@ -679,7 +680,7 @@
 						showCancel: false,
 					});
 				} else {
-					_this.submitAjax(_this.$mjjUrl + 'denseShelves/rightmove?quNum=' + _this.regionNum + '&column=' + _this.colNum,
+					_this.submitAjax( 'denseShelves/rightmove?quNum=' + _this.regionNum + '&column=' + _this.colNum,
 						null, 'POST',
 						function(res) {
 							if (res.data.state && res.data.row) {
@@ -703,6 +704,19 @@
 				// _this.direction='right';
 
 			},
+			// 开架
+			openFrame(){
+				let index = this.regionIndex
+				let state = this.regions[index].gdlType
+				console.warn(this.regionArray[index],state,'密集架所在区和位置')
+				if(state == '右边'){
+					this.leftMove()
+				}else{
+					this.rightMove()
+				}
+				
+			},
+			
 			/*------ API ------*/
 
 			
