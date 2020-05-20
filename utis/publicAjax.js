@@ -3,13 +3,18 @@ import {
 } from './url.js';
 const ajax = (url, data, method, success) => {
 	let baseUrl = '';
+	/*
 	uni.getStorage({
 		key: 'ApiUrl',
 		success: function(res) {
 			baseUrl = res.data;
 		}
 	});
-	baseUrl = 'http://' + baseUrl + '/';
+	*/
+   // 更新之后 异步API似乎不好用了
+	let test = uni.getStorageSync('ApiUrl')
+	console.log(test,'异步还是同步')
+	baseUrl = 'http://' + test + '/';
 	/*
 	if (baseUrl) {
 		console.log(baseUrl,'设置服务器')
@@ -19,8 +24,8 @@ const ajax = (url, data, method, success) => {
 		baseUrl = ApiUrl;
 	}*/
 
-
-	console.log(baseUrl)
+	console.log('打印的东西')
+	console.log(baseUrl,'设置服务器')
 	if (method == undefined) {
 		method = 'POST';
 	}

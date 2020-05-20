@@ -21,8 +21,8 @@
 		data() {
 			return {
 				user: {
-					account: 'admin',
-					password: 'cc123456'  
+					account: '',
+					password: ''  
 				},
 				ip:''
 			};

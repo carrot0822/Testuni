@@ -66,6 +66,7 @@
 					contentrefresh: '正在加载...',
 					contentnomore: '没有更多数据了'
 				},
+				fileId:'',
 				scrollTop: 0,
 				old: {
 					scrollTop: 0
@@ -85,13 +86,18 @@
 		},
 		onLoad(option) {
 			let _this = this;
+			_this.fkStoredId = uni.getStorageSync('fkStoredId')
+			console.log(_this.fkStoredId,'取不到？')
+			/*
 			uni.getStorage({
 				key: 'fkStoredId',
 				success: function(res) {
 					_this.fkStoredId = res.data;
 				}
-			});
+			});*/
+			console.log(option,'传递来的数据')
 			_this.fkFileName = option.fkFileName;
+			_this.fileId = option.id?option.id:'';
 			_this.selectArchList(option.id);
 		},
 		// 下拉刷新
@@ -115,34 +121,51 @@
 				console.log(e)
 				this.old.scrollTop = e.detail.scrollTop
 			},
-			initSearch() {
+			initSearch(id) {
 				this.currentPage = 1
 				let _this = this;
-				var data = {
-					fkFileName: _this.fkFileName,
-					fkStoredId: _this.fkStoredId,
-					currentPage: _this.page.currentPage,
-					pageSize: _this.page.pageSize
+				// 如果是不是ID具体进来的
+				if(_this.fkFileName){
+					var data = {
+						fkFileName: _this.fkFileName,
+						fkStoredId: _this.fkStoredId,
+						currentPage: _this.page.currentPage,
+						pageSize: _this.page.pageSize
+					}
+					console.log(data, '搜索数据')
+					_this.submitAjax('appmodule/appFileMapper/selectAppByName', data, 'GET',
+						function(res) {
+							if (res.data.state) {
+								_this.page.totalPage = res.data.page;
+								_this.selectArchArr = res.data.rows
+								uni.showToast({
+									title: '查询成功',
+									duration: 1000
+								});
+							} else {
+								uni.showToast({
+									title: res.data.msg,
+									image: '../../static/del.png',
+									duration: 2000
+								});
+							}
+							uni.stopPullDownRefresh();
+						})
 				}
-				console.log(data,'搜索数据')
-				_this.submitAjax('appmodule/appFileMapper/selectAppByName', data, 'GET',
-					function(res) {
+				
+				if(id){
+					_this.submitAjax('appmodule/appFileMapper/selectAppById?id=' + id, null, 'GET', function(res) {
+						console.log(res)
 						if (res.data.state) {
-							_this.page.totalPage = res.data.page;
-							_this.selectArchArr = res.data.rows
-							uni.showToast({
-							    title: '查询成功',
-							    duration: 1000
-							});
+							_this.selectArchArr.push(res.data.row);
+							_this.page.totalPage = 1;
 						}else{
-							uni.showToast({
-							    title: '查询失败',
-								image:'../../static/del.png',
-							    duration: 2000
-							});
+							
 						}
 						uni.stopPullDownRefresh();
 					})
+				}
+				
 			},
 			selectArchList: function(id) {
 				let _this = this;
@@ -159,8 +182,8 @@
 					})
 				}
 			},
-			filterList(){
-				
+			filterList() {
+
 			},
 			// 根据关键字查询
 			selectArch: function() {
@@ -193,12 +216,12 @@
 							var resjson = msg.region;
 							var dir = locate.direction;
 							var cols = locate.colNum;
-							
-							if(dir==="左"){
-							 	dir="left"; 
-							 }else if(dir==="右"){
-							 	dir="right"; 
-							 }  
+
+							if (dir === "左") {
+								dir = "left";
+							} else if (dir === "右") {
+								dir = "right";
+							}
 							// var gdlType;
 							// if(resjson.gdlType==="left"){
 							// 	gdlType="left"; 
@@ -222,7 +245,7 @@
 									} else {
 										uni.showModal({
 											title: '打开架体失败',
-											content:'提示:'+ res.data.msg,
+											content: '提示:' + res.data.msg,
 											showCancel: false,
 											success: function(res) {
 												if (res.confirm) {

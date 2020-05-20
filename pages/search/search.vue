@@ -82,18 +82,23 @@
 			}
 		},
 		watch: {
+			// 用侦听器不监听change也是强大
 			searchText: function(newVal, oldVal) {
 				let _this=this;
 				if(!newVal){
 					return;
 				}
 				let fkStoredId='';
+				fkStoredId = uni.getStorageSync('fkStoredId')
+				console.log(fkStoredId)
+				/*
 				uni.getStorage({
 				    key: 'fkStoredId',
 				    success: function (res) {
 				        fkStoredId=res.data;
 				    }
 				});
+				*/
 					_this.submitAjax('appmodule/appFileMapper/selectAppByName?fkFileName=' + newVal+'&fkStoredId='+fkStoredId, null, 'GET',
 						function(res) { 
 							if (res.data.state) {

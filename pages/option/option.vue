@@ -248,6 +248,8 @@
 					tvoc: 0,
 				},
 				timeer: null,
+				hasPerson:false,
+				requestIp:''
 			};
 		},
 		watch: {
@@ -260,13 +262,17 @@
 					}
 				});
 			},
+				
+			requestIp:function(newVal,oldVal){
+				console.log(newVal,'每次Ip变动')
+				this._bindIp()
+			}
 		},
 		onLoad() {
 			// 获取手机状态栏高度
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
 			// 获取实际body高度、宽度
 			this.bodyHeight = uni.getSystemInfoSync()['windowHeight'] - this.statusBarHeight - 48;
-
 			// 检查缓存
 			let storeroomIndex = uni.getStorageSync('storeroomIndex')
 			if (storeroomIndex) {
@@ -337,6 +343,7 @@
 			// 查询所有库房
 			selectStoreRoom: function() {
 				let _this = this;
+				
 				_this.submitAjax('environmentmodule/wkStoTbStore/selectWkStoTbStore', null, 'GET', function(res) {
 					_this.storeroomArray = [];
 					_this.storerooms = res.data.rows;
@@ -357,7 +364,7 @@
 				_this.storeroomIndex = e.target.value;
 				// 缓存选择的库房
 				uni.setStorageSync('storeroomIndex', e.target.value)
-				// 库房切换后初始化区列
+				// 库房切换后初始化区列 初始化后传递TCPIP值
 				this.colIndex = 0
 				this.regionIndex = 0
 				uni.setStorageSync('regionIndex', 0);
@@ -379,18 +386,22 @@
 					let index = _this.regionIndex
 					_this.regionNum = res.data.rows[index].regionNum;
 					_this.getCols(_this.regionNum);
+					// 调取IP值
+					_this.requestIp = _this.regions[index].reqestIp // 一般来说需要这里发请求 但是写了监听器
+					console.log(_this.regions[index].reqestIp,'每次改变都需要改动IP传给后台')
 					// 获取温湿度、状态
-
+					
 					_this.timeer = setInterval(() => {
 						_this.timingGetState()
 						console.log('定时器没关上吗')
 					}, 3000);
-
+					
 				})
 			},
 			regionChange: function(e) {
 				let _this = this;
 				_this.regionNum = _this.regions[e.target.value].regionNum;
+				let selected = e.target.value
 				_this.regionIndex = e.target.value;
 				uni.setStorage({
 					key: 'regionIndex',
@@ -399,6 +410,10 @@
 						console.log('success 存储区号', e.target.value);
 					}
 				});
+				console.log(_this.regionIndex,_this.regionNum,'到底哪个是索引')
+				// 换区的时候也要更换IP
+				_this.requestIp = _this.regions[selected].reqestIp
+				console.log(this.regions[selected].reqestIp)
 				_this.getCols(_this.regionNum);
 			},
 			// 根据区获取列
@@ -441,11 +456,20 @@
 				_this.submitAjax( 'denseShelves/getstates?quNum=' + qu_num, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						let data = JSON.parse(res.data.row);
+						let person = Number(data.personCount)
+						
+						console.log(typeof(person),person,'数据格式')
 						_this.state = data.message;
 						// console.log(_this.state) 
 						let unlockArr = ['正在左移中','正在右移中','解除']
 						let lockArr = ['禁止','锁定','到位','机械锁定','停止','门禁']
-							
+						
+						if(person){
+							_this.hasPerson = true
+						}else{
+							_this.hasPerson = false
+						}
+						console.log('有人mua',_this.hasPerson)
 						if(unlockArr.includes(data.message)){
 							_this.isLocked = false
 							
@@ -551,6 +575,14 @@
 			// 合架
 			closeTask: function() {
 				let _this = this;
+				if(_this.hasPerson){
+					uni.showModal({
+						title: '提示',
+						content: '密集架内有人,无法移动密集架',
+						showCancel: false,
+					});
+					return 
+				}
 				_this.submitAjax( 'denseShelves/merge?quNum=' + _this.regionNum, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						// let data=JSON.parse(); 
@@ -609,6 +641,14 @@
 			// 左移
 			left: function() {
 				let _this = this;
+				if(_this.hasPerson){
+					uni.showModal({
+						title: '提示',
+						content: '密集架内有人,无法移动密集架',
+						showCancel: false,
+					});
+					return 
+				}
 				// 查状态 
 				if (_this.isLocked) {
 					uni.showModal({
@@ -673,6 +713,14 @@
 			// 右移 
 			right: function() {
 				let _this = this;
+				if(_this.hasPerson){
+					uni.showModal({
+						title: '提示',
+						content: '密集架内有人,无法移动密集架',
+						showCancel: false,
+					});
+					return 
+				}
 				if (_this.isLocked) {
 					uni.showModal({
 						title: '提示',
@@ -731,6 +779,8 @@
 				this._jugeState().then(()=>{
 					console.log('这个left执行')
 					this.left()
+				}).catch((e)=>{
+					console.log(e,'这样抛错收的到吗')
 				})
 			},
 			// 判定是否锁定
@@ -738,6 +788,11 @@
 				let qu_num = this.regionNum;
 				let res = await axios(this.$mjjUrl + 'denseShelves/getstates?quNum=' + qu_num, null, 'POST')
 				// 请求失败的处理情况
+				console.log(res,'状态请求失败')
+					
+				if(!res.data.state){
+					return Promise.reject(res.data.msg)
+				}
 				let data = JSON.parse(res.data.row);
 				let unlockArr = ['正在左移中','正在右移中','解除']
 				let lockArr = ['禁止','锁定','到位','机械锁定','停止','门禁']
@@ -752,6 +807,22 @@
 				
 				console.log('这个先执行')
 			},
+			// 绑定密集架IP
+			_bindIp(){
+				let ip = this.requestIp
+				axios(this.$mjjUrl + `denseShelves/configIp?ip=${ip}`,null,'POST').then((res)=>{
+					if(res.data.state){
+						console.log(res,'测试数据是这样的吗')
+					}else{
+						uni.showToast({
+						    title: res.data.msg,
+						    duration: 2000
+						});
+						console.log('配置失败')
+					}
+					
+				})
+			}
 			
 			
 		}
