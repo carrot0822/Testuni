@@ -74,6 +74,68 @@
 					</view>
 				</view>
 				<view class="temp_shelf">
+					<swiper class="swiper" :indicator-dots="true" :autoplay="false">
+						<swiper-item>
+							<view class="temp_shelf_box">
+
+								<view class="item_box">
+									<view class="item_box_box">
+										<view class="" style="color: #FF7E00;">
+											<text class="item_count">{{hjz.wd}}</text>
+											<text class="item_unit">℃</text>
+										</view>
+										<view class="item_title">
+											温度
+										</view>
+									</view>
+								</view>
+								<view class="item_box">
+									<view class="item_box_box">
+										<view class="" style="color:#00BAFF;">
+											<text class="item_count">{{hjz.sd}}</text>
+											<text class="item_unit">%RH</text>
+										</view>
+										<view class="item_title">
+											湿度
+										</view>
+									</view>
+								</view>
+								<view class="item_box">
+									<view class="item_box_box">
+										<view class="" style="color: #84CF0C;">
+											<text class="item_count">{{hjz.pm25}}</text>
+											<text class="item_unit">ug/m³</text>
+										</view>
+										<view class="item_title">
+											PM2.5
+										</view>
+									</view>
+								</view>
+
+							</view>
+
+						</swiper-item>
+						<swiper-item>
+							<view class="anthoerBox">
+								<view class="item_box">
+									<button class="button" type="primary" @click="launchApp">打开监控</button>
+								</view>
+								<view class="item_box">
+									<button class="button" type="primary" @click="launchLog">门禁记录</button>
+								</view>
+								<view class="item_box">
+									<button class="button" type="primary" @click="launchTri">开启空调</button>
+								</view>
+								<view class="item_box">
+									<button class="button" type="primary" @click="launchDel">开启除湿机</button>
+								</view>
+							</view>
+
+						</swiper-item>
+
+					</swiper>
+
+					<!--				
 					<scroll-view class="temp_shelf_box" scroll-x="true" @scroll="scrollL" @scrolltoupper="upper" @scrolltolower="lower">
 						<view class="item_box">
 							<view class="item_box_box">
@@ -99,39 +161,6 @@
 						</view>
 						<view class="item_box">
 							<view class="item_box_box">
-								<view class="" style="color: #00DC87;">
-									<text class="item_count">{{hjz.tvoc}}</text>
-									<text class="item_unit">ug/m³</text>
-								</view>
-								<view class="item_title">
-									TVOC
-								</view>
-							</view>
-						</view>
-						<view class="item_box">
-							<view class="item_box_box">
-								<view class="" style="color: #FFA800;">
-									<text class="item_count">{{hjz.ch20}}</text>
-									<text class="item_unit">ug/m³</text>
-								</view>
-								<view class="item_title">
-									甲醛
-								</view>
-							</view>
-						</view>
-						<view class="item_box">
-							<view class="item_box_box">
-								<view class="" style="color: #08ECE9;">
-									<text class="item_count">{{hjz.pm10}}</text>
-									<text class="item_unit">ug/m³</text>
-								</view>
-								<view class="item_title">
-									PM10
-								</view>
-							</view>
-						</view>
-						<view class="item_box">
-							<view class="item_box_box">
 								<view class="" style="color: #84CF0C;">
 									<text class="item_count">{{hjz.pm25}}</text>
 									<text class="item_unit">ug/m³</text>
@@ -141,18 +170,15 @@
 								</view>
 							</view>
 						</view>
+
 						<view class="item_box">
-							<view class="item_box_box">
-								<view class="" style="color: #FF683F;">
-									<text class="item_count">{{hjz.co2}}</text>
-									<text class="item_unit">ppm</text>
-								</view>
-								<view class="item_title">
-									CO2
-								</view>
-							</view>
+							<button class="button" type="primary" @click="launchApp">打开监控</button>
+						</view>
+						<view class="item_box">
+							<button class="button" type="primary" @click="launchLog">打开门禁记录</button>
 						</view>
 					</scroll-view>
+					-->
 					<view class="scroll_point">
 						<block v-for="i in 2" :key="i">
 							<view class="point_default" :class="[i==tabInd?'active_default':'']"> </view>
@@ -248,8 +274,8 @@
 					tvoc: 0,
 				},
 				timeer: null,
-				hasPerson:false,
-				requestIp:''
+				hasPerson: false,
+				requestIp: ''
 			};
 		},
 		watch: {
@@ -262,9 +288,9 @@
 					}
 				});
 			},
-				
-			requestIp:function(newVal,oldVal){
-				console.log(newVal,'每次Ip变动')
+
+			requestIp: function(newVal, oldVal) {
+				console.log(newVal, '每次Ip变动')
 				this._bindIp()
 			}
 		},
@@ -297,7 +323,7 @@
 				uni.setStorageSync('colIndex', 0);
 			}
 
-			
+
 			//this.selectStoreRoom();
 		},
 		onShow() {
@@ -317,6 +343,86 @@
 			console.log(this.timeer, '定时器没关掉吗')
 		},
 		methods: {
+			launchLog() {
+				uni.navigateTo({
+					url: '../scanLog/log'
+				});
+			},
+			launchTri() {
+				uni.showModal({
+					title: '提示',
+					content: '您未连接设备',
+					showCancel: false,
+					success: function(res) {
+
+					}
+				});
+			},
+			launchDel() {
+				uni.showModal({
+					title: '提示',
+					content: '您未连接设备',
+					showCancel: false,
+					success: function(res) {
+
+					}
+				});
+			},
+			launchApp() {
+				let _this = this;
+				let cameraIp = uni.getStorageSync('cameraIp')
+				console.log(cameraIp, '监控IP？')
+				if (!cameraIp) {
+					uni.showModal({
+						title: '提示',
+						content: '您未设置监控摄像头IP',
+						showCancel: false,
+						success: function(res) {
+
+						}
+					});
+					return
+				}
+				// 判断是否有这个应用
+				if (!plus.runtime.isApplicationExist({
+						pname: 'com.dense.kuiniu.hkcamera'
+					})) {
+					uni.showModal({
+						title: '提示',
+						content: '您尚未安装夔牛app',
+						showCancel: false,
+						success: function(res) {
+
+						}
+					});
+					return
+				}
+
+				console.log(plus.runtime.isApplicationExist({
+					pname: 'com.dense.kuiniu.hkcamera'
+				}), '是否有app')
+				// 判断平台  
+				console.log('点击了 但是错误函数不运行吗')
+				if (plus.os.name == 'Android') {
+					plus.runtime.launchApplication({
+							pname: 'com.dense.kuiniu.hkcamera',
+							extra: {
+								ip: cameraIp
+							}
+						},
+						function(e) {
+							console.log('Open system default browser failed: ' + e.message);
+						}
+					);
+				} else if (plus.os.name == 'iOS') {
+					plus.runtime.launchApplication({
+						action: 'taobao://'
+					}, function(e) {
+						console.log('Open system default browser failed: ' + e.message);
+					});
+				}
+
+			},
 			onPageJump() {
 				uni.navigateTo({
 					url: '../search/search'
@@ -343,7 +449,7 @@
 			// 查询所有库房
 			selectStoreRoom: function() {
 				let _this = this;
-				
+
 				_this.submitAjax('environmentmodule/wkStoTbStore/selectWkStoTbStore', null, 'GET', function(res) {
 					_this.storeroomArray = [];
 					_this.storerooms = res.data.rows;
@@ -388,14 +494,14 @@
 					_this.getCols(_this.regionNum);
 					// 调取IP值
 					_this.requestIp = _this.regions[index].reqestIp // 一般来说需要这里发请求 但是写了监听器
-					console.log(_this.regions[index].reqestIp,'每次改变都需要改动IP传给后台')
+					console.log(_this.regions[index].reqestIp, '每次改变都需要改动IP传给后台')
 					// 获取温湿度、状态
-					
+
 					_this.timeer = setInterval(() => {
 						_this.timingGetState()
 						console.log('定时器没关上吗')
 					}, 3000);
-					
+
 				})
 			},
 			regionChange: function(e) {
@@ -410,7 +516,7 @@
 						console.log('success 存储区号', e.target.value);
 					}
 				});
-				console.log(_this.regionIndex,_this.regionNum,'到底哪个是索引')
+				console.log(_this.regionIndex, _this.regionNum, '到底哪个是索引')
 				// 换区的时候也要更换IP
 				_this.requestIp = _this.regions[selected].reqestIp
 				console.log(this.regions[selected].reqestIp)
@@ -435,7 +541,7 @@
 					}
 					_this.cols.push(i);
 				}
-				console.log(this.regions,'查询区数据')
+				console.log(this.regions, '查询区数据')
 				_this.colNum = _this.cols[0];
 			},
 			colChange: function(e) {
@@ -453,32 +559,32 @@
 			timingGetState: function() {
 				let _this = this;
 				let qu_num = _this.regionNum;
-				_this.submitAjax( 'denseShelves/getstates?quNum=' + qu_num, null, 'POST', function(res) {
+				_this.submitAjax('denseShelves/getstates?quNum=' + qu_num, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						let data = JSON.parse(res.data.row);
 						let person = Number(data.personCount)
-						
-						console.log(typeof(person),person,'数据格式')
+
+						console.log(typeof(person), person, '数据格式')
 						_this.state = data.message;
 						// console.log(_this.state) 
-						let unlockArr = ['正在左移中','正在右移中','解除']
-						let lockArr = ['禁止','锁定','到位','机械锁定','停止','门禁']
-						
-						if(person){
+						let unlockArr = ['正在左移中', '正在右移中', '解除']
+						let lockArr = ['禁止', '锁定', '到位', '机械锁定', '停止', '门禁']
+
+						if (person) {
 							_this.hasPerson = true
-						}else{
+						} else {
 							_this.hasPerson = false
 						}
-						console.log('有人mua',_this.hasPerson)
-						if(unlockArr.includes(data.message)){
+						console.log('有人mua', _this.hasPerson)
+						if (unlockArr.includes(data.message)) {
 							_this.isLocked = false
-							
-						}else if(lockArr.includes(data.message)){
+
+						} else if (lockArr.includes(data.message)) {
 							_this.isLocked = true
-							
+
 						}
-						
-						
+
+
 						if (_this.state == '禁止' || _this.state == '锁定' ||
 							_this.state == '到位' || _this.state == '机械锁定' || _this.state == '停止') {
 							_this.isMove = false;
@@ -493,18 +599,21 @@
 			// 获取温湿度
 			getGethumiture: function(qu_num) {
 				let _this = this;
-				_this.submitAjax( 'countmodule/storeAndRegionCount/getNewHumiture?quNum=' + qu_num, null, 'POST',
+				_this.submitAjax('denseShelves/gethumiture?quNum=' + qu_num, null, 'POST',
 					function(res) {
+						console.log(res, '温湿度')
 						if (res.data.state && res.data.row) {
-							let data = res.data.row;
-							// console.log(data)
-							_this.hjz.wd = data.wd.toFixed(1) ? data.wd.toFixed(1) : 0;
-							_this.hjz.sd = data.sd.toFixed(1) ? data.sd.toFixed(1) : 0;
+							let data = JSON.parse(res.data.row);
+							console.log(data, '理论上我强转了')
+							_this.hjz.wd = data.temperature ? data.temperature : 0;
+							_this.hjz.sd = data.humidity ? data.humidity : 0;
+							/*
 							_this.hjz.tvoc = data.tvoc.toFixed(1) ? data.tvoc.toFixed(1) : 0;
 							_this.hjz.co2 = data.co2.toFixed(1) ? data.co2.toFixed(1) : 0;
 							_this.hjz.ch20 = data.ch20.toFixed(1) ? data.ch20.toFixed(1) : 0;
 							_this.hjz.pm10 = data.pm10.toFixed(1) ? data.pm10.toFixed(1) : 0;
-							_this.hjz.pm25 = data.pm25.toFixed(1) ? data.pm25.toFixed(1) : 0;
+							*/
+							_this.hjz.pm25 = data.PM ? data.PM : 0;
 						}
 					})
 			},
@@ -513,7 +622,7 @@
 				let _this = this;
 				let qu_num = _this.regionNum;
 				if (_this.isLocked) {
-					_this.submitAjax( 'denseShelves/Unlock?quNum=' + qu_num, null, 'POST', function(res) {
+					_this.submitAjax('denseShelves/Unlock?quNum=' + qu_num, null, 'POST', function(res) {
 						// console.log(res)
 						if (res.data.state && res.data.row) {
 							let data = JSON.parse(res.data.row);
@@ -534,7 +643,7 @@
 						}
 					})
 				} else {
-					_this.submitAjax( 'denseShelves/locking?quNum=' + qu_num, null, 'POST', function(res) {
+					_this.submitAjax('denseShelves/locking?quNum=' + qu_num, null, 'POST', function(res) {
 						// console.log(res)
 						if (res.data.state && res.data.row) {
 							let data = JSON.parse(res.data.row);
@@ -559,7 +668,7 @@
 			// 自动开架
 			opTask: function() {
 				let _this = this;
-				_this.submitAjax( 'denseShelves/openshelf?quNum=' + _this.regionNum, null, 'POST', function(res) {
+				_this.submitAjax('denseShelves/openshelf?quNum=' + _this.regionNum, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						// let data=JSON.parse(); 
 					} else {
@@ -575,15 +684,15 @@
 			// 合架
 			closeTask: function() {
 				let _this = this;
-				if(_this.hasPerson){
+				if (_this.hasPerson) {
 					uni.showModal({
 						title: '提示',
 						content: '密集架内有人,无法移动密集架',
 						showCancel: false,
 					});
-					return 
+					return
 				}
-				_this.submitAjax( 'denseShelves/merge?quNum=' + _this.regionNum, null, 'POST', function(res) {
+				_this.submitAjax('denseShelves/merge?quNum=' + _this.regionNum, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						// let data=JSON.parse(); 
 						uni.showToast({
@@ -612,7 +721,7 @@
 			// 通风
 			ventilation: function() {
 				let _this = this;
-				_this.submitAjax( 'denseShelves/aeration?quNum=' + _this.regionNum, null, 'POST', function(res) {
+				_this.submitAjax('denseShelves/aeration?quNum=' + _this.regionNum, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						// let data=JSON.parse(); 
 						uni.showToast({
@@ -641,13 +750,13 @@
 			// 左移
 			left: function() {
 				let _this = this;
-				if(_this.hasPerson){
+				if (_this.hasPerson) {
 					uni.showModal({
 						title: '提示',
 						content: '密集架内有人,无法移动密集架',
 						showCancel: false,
 					});
-					return 
+					return
 				}
 				// 查状态 
 				if (_this.isLocked) {
@@ -657,7 +766,7 @@
 						showCancel: false,
 					});
 				} else {
-					_this.submitAjax( 'denseShelves/leftmove?quNum=' + _this.regionNum + '&column=' + _this.colNum,
+					_this.submitAjax('denseShelves/leftmove?quNum=' + _this.regionNum + '&column=' + _this.colNum,
 						null, 'POST',
 						function(res) {
 							if (res.data.state && res.data.row) {
@@ -683,7 +792,7 @@
 			stop: function() {
 				let _this = this;
 				_this.isMove = false;
-				_this.submitAjax( 'denseShelves/stop?quNum=' + _this.regionNum, null, 'POST', function(res) {
+				_this.submitAjax('denseShelves/stop?quNum=' + _this.regionNum, null, 'POST', function(res) {
 					if (res.data.state && res.data.row) {
 						// let data=JSON.parse(); 
 						uni.showToast({
@@ -713,13 +822,13 @@
 			// 右移 
 			right: function() {
 				let _this = this;
-				if(_this.hasPerson){
+				if (_this.hasPerson) {
 					uni.showModal({
 						title: '提示',
 						content: '密集架内有人,无法移动密集架',
 						showCancel: false,
 					});
-					return 
+					return
 				}
 				if (_this.isLocked) {
 					uni.showModal({
@@ -728,7 +837,7 @@
 						showCancel: false,
 					});
 				} else {
-					_this.submitAjax( 'denseShelves/rightmove?quNum=' + _this.regionNum + '&column=' + _this.colNum,
+					_this.submitAjax('denseShelves/rightmove?quNum=' + _this.regionNum + '&column=' + _this.colNum,
 						null, 'POST',
 						function(res) {
 							if (res.data.state && res.data.row) {
@@ -753,82 +862,94 @@
 
 			},
 			// 开架
-			openFrame(){
+			openFrame() {
 				let index = this.regionIndex
 				let state = this.regions[index].gdlType
-				console.warn(this.regionArray[index],state,'密集架所在区和位置')
-				if(state == '右边'){
+				console.warn(this.regionArray[index], state, '密集架所在区和位置')
+				if (state == '右边') {
 					this.leftMove()
-				}else{
+				} else {
 					this.rightMove()
 				}
-				
+
 			},
-			
+
 			/*------ API ------*/
 
-			
+
 			// 判定密集架状态
-			rightMove(){
-				this._jugeState().then(()=>{
+			rightMove() {
+				this._jugeState().then(() => {
 					console.log('这个right执行')
 					this.right()
 				})
 			},
-			leftMove(){
-				this._jugeState().then(()=>{
+			leftMove() {
+				this._jugeState().then(() => {
 					console.log('这个left执行')
 					this.left()
-				}).catch((e)=>{
-					console.log(e,'这样抛错收的到吗')
+				}).catch((e) => {
+					console.log(e, '这样抛错收的到吗')
 				})
 			},
 			// 判定是否锁定
-			_jugeState:async function(){
+			_jugeState: async function() {
 				let qu_num = this.regionNum;
 				let res = await axios(this.$mjjUrl + 'denseShelves/getstates?quNum=' + qu_num, null, 'POST')
 				// 请求失败的处理情况
-				console.log(res,'状态请求失败')
-					
-				if(!res.data.state){
+				console.log(res, '状态请求失败')
+
+				if (!res.data.state) {
 					return Promise.reject(res.data.msg)
 				}
 				let data = JSON.parse(res.data.row);
-				let unlockArr = ['正在左移中','正在右移中','解除']
-				let lockArr = ['禁止','锁定','到位','机械锁定','停止','门禁']
-					
-				if(unlockArr.includes(data.message)){
+				let unlockArr = ['正在左移中', '正在右移中', '解除']
+				let lockArr = ['禁止', '锁定', '到位', '机械锁定', '停止', '门禁']
+
+				if (unlockArr.includes(data.message)) {
 					this.isLocked = false
-					
-				}else if(lockArr.includes(data.message)){
+
+				} else if (lockArr.includes(data.message)) {
 					this.isLocked = true
-					
+
 				}
-				
+
 				console.log('这个先执行')
 			},
 			// 绑定密集架IP
-			_bindIp(){
+			_bindIp() {
 				let ip = this.requestIp
-				axios(this.$mjjUrl + `denseShelves/configIp?ip=${ip}`,null,'POST').then((res)=>{
-					if(res.data.state){
-						console.log(res,'测试数据是这样的吗')
-					}else{
+				axios(this.$mjjUrl + `denseShelves/configIp?ip=${ip}`, null, 'POST').then((res) => {
+					if (res.data.state) {
+						console.log(res, '测试数据是这样的吗')
+					} else {
 						uni.showToast({
-						    title: res.data.msg,
-						    duration: 2000
+							title: res.data.msg,
+							duration: 2000
 						});
 						console.log('配置失败')
 					}
-					
+
 				})
 			}
-			
-			
+
+
 		}
 	}
 </script>
 
 <style>
 	@import "option.css";
+
+	.anthoerBox {
+		width: 100%;
+		height: 90%;
+		white-space: nowrap;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.anthoerBox .item_box{
+		margin-right: 26upx;
+		margin-left: 5upx;
+	}
 </style>

@@ -33,7 +33,26 @@
 		        "navigationBarTextStyle" : "white",
 				"enablePullDownRefresh":true
 		    }
+		},
+		{
+		    "path" : "pages/scanLog/log",
+		    "style" : {
+		        "navigationBarTitleText" : "报警信息",
+		        "navigationBarBackgroundColor" : "#1C87FF",
+		        "navigationBarTextStyle" : "white",
+				"enablePullDownRefresh":true
+		    }
+		},
+		{
+		    "path" : "pages/scanLog/logDetail",
+		    "style" : {
+		        "navigationBarTitleText" : "报警详情",
+		        "navigationBarBackgroundColor" : "#1C87FF",
+		        "navigationBarTextStyle" : "white",
+				"enablePullDownRefresh":true
+		    }
 		}
+		
   //       {
   //           "path" : "pages/personalCenter/personalCenter",
   //           "style" : {
