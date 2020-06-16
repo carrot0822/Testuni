@@ -340,7 +340,7 @@
 			console.log(this.timeer, '编译器')
 			clearInterval(this.timeer)
 			this.timeer = null
-			console.log(this.timeer, '定时器没关掉吗')
+			console.log(this.timeer, '定时器关闭')
 		},
 		methods: {
 			launchLog() {
@@ -483,6 +483,7 @@
 				clearInterval(this.timeer)
 				this.timeer = null
 				console.log('只打开一个定时器', this.timeer)
+				
 				_this.submitAjax('storeroommodule/stoTbRegion/selectByBind?fkStoreId=' + fkStoreId, null, 'GET', function(res) {
 					_this.regionArray = [];
 					_this.regions = res.data.rows;
@@ -496,12 +497,12 @@
 					_this.requestIp = _this.regions[index].reqestIp // 一般来说需要这里发请求 但是写了监听器
 					console.log(_this.regions[index].reqestIp, '每次改变都需要改动IP传给后台')
 					// 获取温湿度、状态
-
+					
 					_this.timeer = setInterval(() => {
 						_this.timingGetState()
-						console.log('定时器没关上吗')
-					}, 3000);
-
+						
+					}, 10000);
+					
 				})
 			},
 			regionChange: function(e) {
@@ -592,6 +593,8 @@
 						if (_this.state == '正在右移中' || _this.state == '正在左移中') {
 							_this.isMove = true;
 						}
+					}else{
+						
 					}
 				})
 				_this.getGethumiture(qu_num);
@@ -614,6 +617,11 @@
 							_this.hjz.pm10 = data.pm10.toFixed(1) ? data.pm10.toFixed(1) : 0;
 							*/
 							_this.hjz.pm25 = data.PM ? data.PM : 0;
+							
+						}else{
+							_this.hjz.wd = 0
+							_this.hjz.sd = 0
+							_this.hjz.pm2 = 0
 						}
 					})
 			},
@@ -895,7 +903,7 @@
 			// 判定是否锁定
 			_jugeState: async function() {
 				let qu_num = this.regionNum;
-				let res = await axios(this.$mjjUrl + 'denseShelves/getstates?quNum=' + qu_num, null, 'POST')
+				let res = await axios('denseShelves/getstates?quNum=' + qu_num, null, 'POST')
 				// 请求失败的处理情况
 				console.log(res, '状态请求失败')
 
@@ -919,7 +927,8 @@
 			// 绑定密集架IP
 			_bindIp() {
 				let ip = this.requestIp
-				axios(this.$mjjUrl + `denseShelves/configIp?ip=${ip}`, null, 'POST').then((res) => {
+				console.log(this.$mjjUrl)
+				axios(`denseShelves/configIp?ip=${ip}`, null, 'POST').then((res) => {
 					if (res.data.state) {
 						console.log(res, '测试数据是这样的吗')
 					} else {

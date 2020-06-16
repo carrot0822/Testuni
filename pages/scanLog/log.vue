@@ -88,9 +88,15 @@
 			let _this = this;
 			// 初始第一次查询
 			this.initSearch()
-		},
+			uni.showToast({
+				title: '正在查询',
+				duration: 1000
+			});
+			console.log('第一次请求')
+		},	
 		// 下拉刷新
 		onReachBottom() {
+			
 			let _this = this;
 			if (_this.page.currentPage <= _this.page.totalPage) {
 				_this.page.currentPage++;
@@ -110,26 +116,81 @@
 				console.log(e)
 				this.old.scrollTop = e.detail.scrollTop
 			},
+			
+			initSearch() {
+				this.currentPage = 1
+				let _this = this;
+				var data={}
+				data.currentPage = this.page.currentPage
+				data.pageSize = this.page.pageSize
+				_this.submitAjax('storeroom/entranceGuardAlarm/getEntranceGuardAlarmInfos',data,'GET',function(res){
+					if (res.data.state) {
+						_this.page.totalPage = res.data.page;
+						_this.selectArchArr = res.data.rows
+						uni.stopPullDownRefresh();
+						console.log(res,'初始化数据')
+					}else{
+						
+					}
+				})
+			},
+			
+			/*
 			initSearch(id) {
 				this.currentPage = 1
 				
 				var data={}
 				data.currentPage = this.page.currentPage
 				data.pageSize = this.page.pageSize
+				console.log(11111111111111111)
 				axios(this.$mjjUrl+ 'storeroom/entranceGuardAlarm/getEntranceGuardAlarmInfos',data,'GET').then((res)=>{
 					if (res.data.state) {
 						this.page.totalPage = res.data.page;
 						this.selectArchArr = res.data.rows
+						uni.showToast({
+							title: '查询成功',
+							duration: 1000
+						});
 						uni.stopPullDownRefresh();
 						console.log(res,'初始化数据')
 					}else{
-						
+						uni.showToast({
+							title: '请求失败',
+							duration: 1000
+						});
 					}
 					
 				})
 			},
+			
+			*/
 			// http://192.168.2.60:8082/storeroom/entranceGuardAlarm/getEntranceGuardAlarmInfos?currentPage=1&pageSize=20
+			/*
+			selectArch(){
+				let _this = this;
+				var data={}
+				data.currentPage = this.page.currentPage
+				data.pageSize = this.page.pageSize
+				_this.submitAjax('storeroom/entranceGuardAlarm/getEntranceGuardAlarmInfos', data, 'GET',
+					function(res) {
+						if (res.data.state) {
+							_this.page.totalPage = res.data.page;
+							_this.AselectArchArr = _this.selectArchArr.concat(res.data.rows);
+							uni.showToast({
+								title: '查询成功',
+								duration: 1000
+							});
+						}else{
+							uni.showToast({
+								title: '查询失败',
+								duration: 1000
+							});
+						}
+					})
+			}
+			*/
 			// 下拉加载
+			
 			selectArch(){
 				var data={}
 				data.currentPage = this.page.currentPage
@@ -144,6 +205,7 @@
 					
 				})
 			}
+			
 			
 		}
 	}

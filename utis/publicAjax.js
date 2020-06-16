@@ -53,7 +53,7 @@ const ajax = (url, data, method, success) => {
 		}
 	}
 	uni.request({
-
+		
 		url: url.indexOf("http://") == -1 ? baseUrl + url : url,
 
 		data: method == 'POST' ? JSON.stringify(data) : data,
@@ -61,6 +61,7 @@ const ajax = (url, data, method, success) => {
 		header: headerValue,
 		dataType: 'json',
 		success: function(res) {
+			console.log(baseUrl + url,'请求的url')
 			success(res);
 		},
 		fail: function() {

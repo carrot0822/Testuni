@@ -1,14 +1,9 @@
 import {
 	ApiUrl
 } from './url.js';
-let axios = function(url, data, method) {
-	let baseUrl = '';
-	uni.getStorage({
-		key: 'ApiUrl',
-		success: function(res) {
-			baseUrl = res.data;
-		}
-	});
+let baseUrl = '';
+	 baseUrl = uni.getStorageSync('ApiUrl')?uni.getStorageSync('ApiUrl'):''
+	
 
 	if (baseUrl) {
 		console.log(baseUrl, '设置服务器')
@@ -17,7 +12,9 @@ let axios = function(url, data, method) {
 	} else {
 		baseUrl = ApiUrl;
 	}
-	//console.log(baseUrl)
+let axios = function(url, data, method) {
+	
+	console.log(baseUrl,'现在的baseUrl')
 	if (method == undefined) {
 		method = 'POST';
 	}
@@ -42,6 +39,7 @@ let axios = function(url, data, method) {
 			};
 		}
 	}
+	console.log(url,'第二个url')
 	let promise = new Promise((resolve, reject) => {
 		uni.request({
 
@@ -52,6 +50,7 @@ let axios = function(url, data, method) {
 			header: headerValue,
 			dataType: 'json',
 			success: function(res) {
+				console.log(baseUrl + url,'请求的url')
 				resolve(res);
 			},
 			fail: function() {

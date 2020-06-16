@@ -364,7 +364,7 @@ var render = function() {
             {
               staticStyle: {
                 color: "#FFF",
-                background: "#1C87FF",
+                background: "#00a8ad",
                 "margin-top": "70upx",
                 "font-size": "34upx"
               },
@@ -472,7 +472,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../../../HBuilderX.2.6.5.20200314.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.loginIn {\n\theight: 100vh;\n\twidth: 100%;\n\tposition: relative;\n\toverflow: hidden;\n}\n\n/* title */\n.system-title {\n\theight: 30%;\n\twidth: 100%;\n\tpadding-top: 50upx;\n\tpadding-left: 40upx;\n\tcolor: #fff;\n\tbackground-color: #1C87FF;\n}\n.system-title .eng {\n\tposition: absolute;\n\ttop: 6%;\n\tfont-size: 60upx;\n\tfont-family: Helvetica;\n\tfont-weight: bold;\n}\n.system-title .chn {\n\tposition: absolute;\n\ttop: 12%;\n\tfont-size: 40upx;\n\tfont-family: PingFang SC;\n\tfont-weight: bold;\n}\n\n/* login */\n.system-login {\n\theight: 78%;\n\twidth: 90%;\n\tposition: absolute;\n\ttop: 20%;\n\tleft: 50%;\n\t-webkit-transform: translateX(-50%);\n\t        transform: translateX(-50%);\n\tbackground: rgba(255, 255, 255, 1);\n\t-webkit-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);\n\t        box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);\n\tborder-radius: 30upx;\n\toverflow: hidden;\n}\n.system-login uni-input {\n\tborder-bottom: 1px solid #D5D5D5;\n\tmargin: 10upx auto;\n\tpadding-left: 1rem;\n\twidth: 86%;\n\theight: 2rem;\n\tfont-size: 30upx;\n}\n.system-login .login_text {\n\tmargin-top: 50upx;\n\tmargin-left: 40upx;\n\tfont-size: 30upx;\n\tfont-family: PingFang SC;\n\tfont-weight: 500;\n\tcolor: rgba(153, 153, 153, 1);\n}\n.system-login uni-button {\n\tmargin: 1rem auto;\n\theight: 2.6rem;\n\twidth: 86%;\n\tbackground: rgba(28, 135, 255, 1);\n\tborder-radius: 40upx;\n\tfont-size: 30upx;\n\tline-height: 2.6rem;\n}\n.system-login uni-button::after {\n\tborder: none;\n}\n", ""]);
+exports.push([module.i, "\n.loginIn {\n\theight: 100vh;\n\twidth: 100%;\n\tposition: relative;\n\toverflow: hidden;\n}\n\n/* title */\n.system-title {\n\theight: 30%;\n\twidth: 100%;\n\tpadding-top: 50upx;\n\tpadding-left: 40upx;\n\tcolor: #fff;\n\tbackground-color: #00a8ad;\n}\n.system-title .eng {\n\tposition: absolute;\n\ttop: 6%;\n\tfont-size: 60upx;\n\tfont-family: Helvetica;\n\tfont-weight: bold;\n}\n.system-title .chn {\n\tposition: absolute;\n\ttop: 12%;\n\tfont-size: 40upx;\n\tfont-family: PingFang SC;\n\tfont-weight: bold;\n}\n\n/* login */\n.system-login {\n\theight: 78%;\n\twidth: 90%;\n\tposition: absolute;\n\ttop: 20%;\n\tleft: 50%;\n\t-webkit-transform: translateX(-50%);\n\t        transform: translateX(-50%);\n\tbackground: rgba(255, 255, 255, 1);\n\t-webkit-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);\n\t        box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);\n\tborder-radius: 30upx;\n\toverflow: hidden;\n}\n.system-login uni-input {\n\tborder-bottom: 1px solid #D5D5D5;\n\tmargin: 10upx auto;\n\tpadding-left: 1rem;\n\twidth: 86%;\n\theight: 2rem;\n\tfont-size: 30upx;\n}\n.system-login .login_text {\n\tmargin-top: 50upx;\n\tmargin-left: 40upx;\n\tfont-size: 30upx;\n\tfont-family: PingFang SC;\n\tfont-weight: 500;\n\tcolor: rgba(153, 153, 153, 1);\n}\n.system-login uni-button {\n\tmargin: 1rem auto;\n\theight: 2.6rem;\n\twidth: 86%;\n\tbackground: rgba(28, 135, 255, 1);\n\tborder-radius: 40upx;\n\tfont-size: 30upx;\n\tline-height: 2.6rem;\n}\n.system-login uni-button::after {\n\tborder: none;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -1690,6 +1690,52 @@ var render = function() {
                                   )
                                 ],
                                 1
+                              ),
+                              _c(
+                                "v-uni-view",
+                                {
+                                  staticClass: _vm._$g(68, "sc"),
+                                  attrs: { _i: 68 }
+                                },
+                                [
+                                  _c(
+                                    "v-uni-button",
+                                    {
+                                      staticClass: _vm._$g(69, "sc"),
+                                      attrs: { type: "primary", _i: 69 },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.$handleViewEvent($event)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("开启空调")]
+                                  )
+                                ],
+                                1
+                              ),
+                              _c(
+                                "v-uni-view",
+                                {
+                                  staticClass: _vm._$g(70, "sc"),
+                                  attrs: { _i: 70 }
+                                },
+                                [
+                                  _c(
+                                    "v-uni-button",
+                                    {
+                                      staticClass: _vm._$g(71, "sc"),
+                                      attrs: { type: "primary", _i: 71 },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.$handleViewEvent($event)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("开启除湿机")]
+                                  )
+                                ],
+                                1
                               )
                             ],
                             1
@@ -1702,15 +1748,15 @@ var render = function() {
                   ),
                   _c(
                     "v-uni-view",
-                    { staticClass: _vm._$g(68, "sc"), attrs: { _i: 68 } },
+                    { staticClass: _vm._$g(72, "sc"), attrs: { _i: 72 } },
                     [
                       _vm._l(2, function(i, $10, $20, $30) {
                         return [
                           _c("v-uni-view", {
                             key: i + "_0",
-                            staticClass: _vm._$g("70-" + $30, "sc"),
-                            class: _vm._$g("70-" + $30, "c"),
-                            attrs: { _i: "70-" + $30 }
+                            staticClass: _vm._$g("74-" + $30, "sc"),
+                            class: _vm._$g("74-" + $30, "c"),
+                            attrs: { _i: "74-" + $30 }
                           })
                         ]
                       })
@@ -1725,27 +1771,27 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(71, "sc"), attrs: { _i: 71 } },
+            { staticClass: _vm._$g(75, "sc"), attrs: { _i: 75 } },
             [
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(72, "sc"), attrs: { _i: 72 } },
+                { staticClass: _vm._$g(76, "sc"), attrs: { _i: 76 } },
                 [
                   _c(
                     "v-uni-view",
-                    { staticStyle: { width: "30%" }, attrs: { _i: 73 } },
+                    { staticStyle: { width: "30%" }, attrs: { _i: 77 } },
                     [_vm._v("控制密集架")]
                   ),
                   _c(
                     "v-uni-view",
-                    { staticStyle: { width: "70%" }, attrs: { _i: 74 } },
+                    { staticStyle: { width: "70%" }, attrs: { _i: 78 } },
                     [
                       _c("v-uni-image", {
                         staticStyle: { height: "20upx", width: "90%" },
                         attrs: {
-                          src: _vm._$g(75, "a-src"),
+                          src: _vm._$g(79, "a-src"),
                           mode: "aspectFit",
-                          _i: 75
+                          _i: 79
                         }
                       })
                     ],
@@ -1756,13 +1802,13 @@ var render = function() {
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(76, "sc"), attrs: { _i: 76 } },
+                { staticClass: _vm._$g(80, "sc"), attrs: { _i: 80 } },
                 [
                   _c(
                     "v-uni-view",
                     {
-                      staticClass: _vm._$g(77, "sc"),
-                      attrs: { _i: 77 },
+                      staticClass: _vm._$g(81, "sc"),
+                      attrs: { _i: 81 },
                       on: {
                         click: function($event) {
                           return _vm.$handleViewEvent($event)
@@ -1771,16 +1817,16 @@ var render = function() {
                     },
                     [
                       _c("v-uni-image", {
-                        staticClass: _vm._$g(78, "sc"),
+                        staticClass: _vm._$g(82, "sc"),
                         attrs: {
-                          src: _vm._$g(78, "a-src"),
+                          src: _vm._$g(82, "a-src"),
                           mode: "aspectFit",
-                          _i: 78
+                          _i: 82
                         }
                       }),
                       _c(
                         "v-uni-view",
-                        { staticClass: _vm._$g(79, "sc"), attrs: { _i: 79 } },
+                        { staticClass: _vm._$g(83, "sc"), attrs: { _i: 83 } },
                         [_vm._v("左移")]
                       )
                     ],
@@ -1789,8 +1835,8 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     {
-                      staticClass: _vm._$g(80, "sc"),
-                      attrs: { _i: 80 },
+                      staticClass: _vm._$g(84, "sc"),
+                      attrs: { _i: 84 },
                       on: {
                         click: function($event) {
                           return _vm.$handleViewEvent($event)
@@ -1798,78 +1844,43 @@ var render = function() {
                       }
                     },
                     [
-                      _vm._$g(81, "i")
+                      _vm._$g(85, "i")
                         ? _c("v-uni-image", {
-                            staticClass: _vm._$g(81, "sc"),
+                            staticClass: _vm._$g(85, "sc"),
                             attrs: {
-                              src: _vm._$g(81, "a-src"),
+                              src: _vm._$g(85, "a-src"),
                               mode: "aspectFit",
-                              _i: 81
+                              _i: 85
                             }
                           })
                         : _c("v-uni-image", {
-                            staticClass: _vm._$g(82, "sc"),
+                            staticClass: _vm._$g(86, "sc"),
                             attrs: {
-                              src: _vm._$g(82, "a-src"),
+                              src: _vm._$g(86, "a-src"),
                               mode: "aspectFit",
-                              _i: 82
+                              _i: 86
                             }
                           }),
-                      _vm._$g(83, "i")
+                      _vm._$g(87, "i")
                         ? _c(
                             "v-uni-view",
                             {
-                              staticClass: _vm._$g(83, "sc"),
-                              attrs: { _i: 83 }
+                              staticClass: _vm._$g(87, "sc"),
+                              attrs: { _i: 87 }
                             },
                             [_vm._v("移动中")]
                           )
                         : _c(
                             "v-uni-view",
                             {
-                              staticClass: _vm._$g(84, "sc"),
-                              attrs: { _i: 84 }
+                              staticClass: _vm._$g(88, "sc"),
+                              attrs: { _i: 88 }
                             },
                             [_vm._v("停止")]
                           )
                     ],
                     1
                   ),
-                  _c(
-                    "v-uni-view",
-                    {
-                      staticClass: _vm._$g(85, "sc"),
-                      attrs: { _i: 85 },
-                      on: {
-                        click: function($event) {
-                          return _vm.$handleViewEvent($event)
-                        }
-                      }
-                    },
-                    [
-                      _c("v-uni-image", {
-                        staticClass: _vm._$g(86, "sc"),
-                        attrs: {
-                          src: _vm._$g(86, "a-src"),
-                          mode: "aspectFit",
-                          _i: 86
-                        }
-                      }),
-                      _c(
-                        "v-uni-view",
-                        { staticClass: _vm._$g(87, "sc"), attrs: { _i: 87 } },
-                        [_vm._v("右移")]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _c(
-                "v-uni-view",
-                { staticClass: _vm._$g(88, "sc"), attrs: { _i: 88 } },
-                [
                   _c(
                     "v-uni-view",
                     {
@@ -1893,6 +1904,41 @@ var render = function() {
                       _c(
                         "v-uni-view",
                         { staticClass: _vm._$g(91, "sc"), attrs: { _i: 91 } },
+                        [_vm._v("右移")]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(92, "sc"), attrs: { _i: 92 } },
+                [
+                  _c(
+                    "v-uni-view",
+                    {
+                      staticClass: _vm._$g(93, "sc"),
+                      attrs: { _i: 93 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("v-uni-image", {
+                        staticClass: _vm._$g(94, "sc"),
+                        attrs: {
+                          src: _vm._$g(94, "a-src"),
+                          mode: "aspectFit",
+                          _i: 94
+                        }
+                      }),
+                      _c(
+                        "v-uni-view",
+                        { staticClass: _vm._$g(95, "sc"), attrs: { _i: 95 } },
                         [_vm._v("通风")]
                       )
                     ],
@@ -1901,8 +1947,8 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     {
-                      staticClass: _vm._$g(92, "sc"),
-                      attrs: { _i: 92 },
+                      staticClass: _vm._$g(96, "sc"),
+                      attrs: { _i: 96 },
                       on: {
                         click: function($event) {
                           return _vm.$handleViewEvent($event)
@@ -1911,16 +1957,16 @@ var render = function() {
                     },
                     [
                       _c("v-uni-image", {
-                        staticClass: _vm._$g(93, "sc"),
+                        staticClass: _vm._$g(97, "sc"),
                         attrs: {
-                          src: _vm._$g(93, "a-src"),
+                          src: _vm._$g(97, "a-src"),
                           mode: "aspectFit",
-                          _i: 93
+                          _i: 97
                         }
                       }),
                       _c(
                         "v-uni-view",
-                        { staticClass: _vm._$g(94, "sc"), attrs: { _i: 94 } },
+                        { staticClass: _vm._$g(98, "sc"), attrs: { _i: 98 } },
                         [_vm._v("开架")]
                       )
                     ],
@@ -1929,8 +1975,8 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     {
-                      staticClass: _vm._$g(95, "sc"),
-                      attrs: { _i: 95 },
+                      staticClass: _vm._$g(99, "sc"),
+                      attrs: { _i: 99 },
                       on: {
                         click: function($event) {
                           return _vm.$handleViewEvent($event)
@@ -1939,16 +1985,16 @@ var render = function() {
                     },
                     [
                       _c("v-uni-image", {
-                        staticClass: _vm._$g(96, "sc"),
+                        staticClass: _vm._$g(100, "sc"),
                         attrs: {
-                          src: _vm._$g(96, "a-src"),
+                          src: _vm._$g(100, "a-src"),
                           mode: "aspectFit",
-                          _i: 96
+                          _i: 100
                         }
                       }),
                       _c(
                         "v-uni-view",
-                        { staticClass: _vm._$g(97, "sc"), attrs: { _i: 97 } },
+                        { staticClass: _vm._$g(101, "sc"), attrs: { _i: 101 } },
                         [_vm._v("合架")]
                       )
                     ],
@@ -1957,8 +2003,8 @@ var render = function() {
                   _c(
                     "v-uni-view",
                     {
-                      staticClass: _vm._$g(98, "sc"),
-                      attrs: { _i: 98 },
+                      staticClass: _vm._$g(102, "sc"),
+                      attrs: { _i: 102 },
                       on: {
                         click: function($event) {
                           return _vm.$handleViewEvent($event)
@@ -1967,27 +2013,27 @@ var render = function() {
                     },
                     [
                       _c("v-uni-image", {
-                        staticClass: _vm._$g(99, "sc"),
+                        staticClass: _vm._$g(103, "sc"),
                         attrs: {
-                          src: _vm._$g(99, "a-src"),
+                          src: _vm._$g(103, "a-src"),
                           mode: "aspectFit",
-                          _i: 99
+                          _i: 103
                         }
                       }),
-                      _vm._$g(100, "i")
+                      _vm._$g(104, "i")
                         ? _c(
                             "v-uni-view",
                             {
-                              staticClass: _vm._$g(100, "sc"),
-                              attrs: { _i: 100 }
+                              staticClass: _vm._$g(104, "sc"),
+                              attrs: { _i: 104 }
                             },
                             [_vm._v("锁定")]
                           )
                         : _c(
                             "v-uni-view",
                             {
-                              staticClass: _vm._$g(101, "sc"),
-                              attrs: { _i: 101 }
+                              staticClass: _vm._$g(105, "sc"),
+                              attrs: { _i: 105 }
                             },
                             [_vm._v("解锁")]
                           )
@@ -2002,7 +2048,7 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(102, "sc"), attrs: { _i: 102 } },
+            { staticClass: _vm._$g(106, "sc"), attrs: { _i: 106 } },
             [_vm._v("智慧档案管理系统")]
           )
         ],
@@ -2103,7 +2149,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! @/static/search_icon
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, "/* 显示温度 */\n.mjj_box .show_temp{\r\n \theight: 30%; \r\n \tpadding: 30upx;\r\n \t-webkit-box-sizing: border-box;\r\n \t        box-sizing: border-box;\n}\n.show_temp .show_temp_title,\r\n.contl_mjj .show_temp_title{\r\n \tdisplay: -webkit-box;\r\n \tdisplay: -webkit-flex;\r\n \tdisplay: flex;\r\n \t-webkit-box-pack: center;\r\n \t-webkit-justify-content: center;\r\n \t        justify-content: center;\r\n \t-webkit-box-orient: horizontal;\r\n \t-webkit-box-direction: normal;\r\n \t-webkit-flex-direction: row;\r\n \t        flex-direction: row;\r\n \t-webkit-box-align: center;\r\n \t-webkit-align-items: center;\r\n \t        align-items: center;  \r\n \tfont-size:32upx; \r\n \theight: 10%; \r\n \tcolor:rgba(120,120,120,1);\n}\n.show_temp .temp_shelf{ \r\n\tmargin-top: 30upx;\r\n\twidth: 100%; \r\n\theight: 90%;\n}\n.temp_shelf_box {\r\n    width:100%;\r\n    height: 90%; \r\n    white-space: nowrap; \r\n    -webkit-box-sizing: border-box; \r\n            box-sizing: border-box;\n}\n.temp_shelf_box .item_box{\r\n\twidth: 33%;\r\n\theight: 100%;\r\n\tmargin-right: 10upx;\r\n\tdisplay: inline-block;\n}\n.temp_shelf_box .item_box_box{\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\r\n\twidth: 90%;\r\n\theight: 70%;  \r\n\t-webkit-box-shadow:0px 10upx 30upx 0px rgba(0, 0, 0, 0.1);  \r\n\t        box-shadow:0px 10upx 30upx 0px rgba(0, 0, 0, 0.1);\r\n\tborder-radius:20px;\n}\n.temp_shelf_box .item_count{ \r\n\tfont-size:40upx;\r\n\tfont-family:Helvetica;\r\n\tfont-weight:bold;\n}\n.temp_shelf_box .item_unit{ \r\n\tfont-size:28upx;\r\n\tfont-family:PingFang SC;  \r\n\tmargin-left: 10upx;\n}\n.temp_shelf_box .item_title{  \r\n\tfont-size:34upx;\r\n\tfont-family:PingFang SC;\r\n\tfont-weight:500;\r\n\tcolor:rgba(181,181,181,1);\n}\r\n/* 滚动指示符 */\n.scroll_point{ \t \r\n\tposition: absolute;\r\n\tleft: 50%;\r\n\t-webkit-transform: translateX(-50%);\r\n\t        transform: translateX(-50%);\n}\n.point_default{\r\n\tmargin: 5upx;\r\n\tfloat: left; \r\n\twidth:14upx;\r\n\theight:8upx;\r\n\tbackground:#D0E6FF;\r\n\tborder-radius:4px;\n}\n.active_default{\r\n\twidth:14upx;\r\n\theight:8upx;\r\n\tborder-radius:4px; \r\n\tbackground: #1C87FF;\n}\r\n/* 选择区列 */\n.mjj_box .sel_qu_lie{ \r\n\theight: 8%;\t \r\n\tdisplay: -webkit-box;\t \r\n\tdisplay: -webkit-flex;\t \r\n\tdisplay: flex;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: row;\r\n\t        flex-direction: row;\r\n\t-webkit-box-pack: justify;\r\n\t-webkit-justify-content: space-between;\r\n\t        justify-content: space-between; \r\n\t-webkit-box-shadow:0px 5px 10px 0px rgba(0, 0, 0, 0.05); \r\n\t        box-shadow:0px 5px 10px 0px rgba(0, 0, 0, 0.05);\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\n}\n.sel_qu_lie_text{\r\n\tmargin-left: 30upx; \r\n\tfont-size:32upx; \r\n\tcolor:rgba(120,120,120,1);\n}\n.sel_qu_lie_text_cur{ \r\n\tfont-size:34upx; \r\n\tfont-weight:bold;\r\n\tcolor:rgba(28,135,255,1);\n}\n.sel_qu_lie_list{\r\n\tmargin-right: 30upx; \r\n\tfont-size:34upx;  \r\n\tcolor:rgba(181,181,181,1);\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: row;\r\n\t        flex-direction: row;\n}\r\n/* 控制密集架 */\n.mjj_box .contl_mjj{\r\n\theight: 54%;\r\n\tpadding: 30upx;\r\n\t-webkit-box-sizing: border-box;\r\n\t        box-sizing: border-box;\n}\n.contl_mjj .mjj_move,\r\n.contl_mjj .mjj_fun_contrl{\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: justify;\r\n\t-webkit-justify-content: space-between;\r\n\t        justify-content: space-between;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: row;\r\n\t        flex-direction: row;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\r\n\tmargin-top: 50upx;\n}\n.contl_mjj .mjj_move .mjj_move_item{\r\n\twidth: 33%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\n}\n.contl_mjj .mjj_fun_contrl .mjj_move_item{\r\n\twidth: 25%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\n}\n.mjj_move_item uni-image{\r\n\twidth: 42upx;\r\n\theight: 42upx;\r\n\tpadding: 40upx;  \r\n\tborder-radius:50%;\n}\n.mjj_move_item .text{ \r\n\tfont-size:32upx; \r\n\tcolor:rgba(181,181,181,1);\n}\nuni-image.left{\r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(28,167,255,1)),to(rgba(42,197,255,1)));\r\n\tbackground:-webkit-linear-gradient(bottom,rgba(28,167,255,1),rgba(42,197,255,1));\r\n\tbackground:linear-gradient(0deg,rgba(28,167,255,1),rgba(42,197,255,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(28,135,255,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(28,135,255,0.1);\n}\nuni-image.start,uni-image.stop{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(255,187,79,1)),to(rgba(255,137,33,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(255,187,79,1),rgba(255,137,33,1)); \r\n\tbackground:linear-gradient(0deg,rgba(255,187,79,1),rgba(255,137,33,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(255,144,0,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(255,144,0,0.1);\n}\nuni-image.right{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(28,167,255,1)),to(rgba(42,197,255,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(28,167,255,1),rgba(42,197,255,1)); \r\n\tbackground:linear-gradient(0deg,rgba(28,167,255,1),rgba(42,197,255,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(28,135,255,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(28,135,255,0.1);\n}\nuni-image.ventilation{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(11,255,212,1)),to(rgba(0,227,123,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(11,255,212,1),rgba(0,227,123,1)); \r\n\tbackground:linear-gradient(0deg,rgba(11,255,212,1),rgba(0,227,123,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(0,227,123,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(0,227,123,0.1);\n}\nuni-image.openSh{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(255,214,71,1)),to(rgba(255,174,46,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(255,214,71,1),rgba(255,174,46,1)); \r\n\tbackground:linear-gradient(0deg,rgba(255,214,71,1),rgba(255,174,46,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(255,174,46,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(255,174,46,0.1);\n}\nuni-image.closeSh{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(48,204,255,1)),to(rgba(0,222,255,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(48,204,255,1),rgba(0,222,255,1)); \r\n\tbackground:linear-gradient(0deg,rgba(48,204,255,1),rgba(0,222,255,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(48,204,255,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(48,204,255,0.1);\n}\nuni-image.lock{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(255,153,102,1)),to(rgba(255,94,98,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(255,153,102,1),rgba(255,94,98,1)); \r\n\tbackground:linear-gradient(0deg,rgba(255,153,102,1),rgba(255,94,98,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(255,94,98,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(255,94,98,0.1);\n}\r\n/* app */\n.mjj_box .app_address{\r\n\theight: 8%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\ttext-align: center; \r\n\tfont-size:32upx; \r\n\tcolor:rgba(206,206,206,1);\r\n\tborder-bottom: 1px solid #f00;\n}\n.content{\r\n\twidth: 100%;\r\n\theight: 100%; \r\n\toverflow: hidden;\r\n\t-webkit-box-sizing: border-box;\r\n\t        box-sizing: border-box;\n}\n.content .status_sty{\r\n\twidth: 100%;\r\n\tbackground: #007AFF;\n}\n.content .header_box{\r\n\tposition: relative;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex; \r\n\t-webkit-box-pack: justify; \r\n\t-webkit-justify-content: space-between; \r\n\t        justify-content: space-between;\r\n\theight: 48px;  \r\n\tbackground: #007AFF;\n}\n.address_select { \r\n\twidth:30%; \r\n\tline-height: 48px;\r\n\tpadding-left: 36upx;\r\n\tfont-size: 32upx; \r\n\tcolor: #FFF;\n}\n.search_box {\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 6%;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\t\r\n\t-webkit-box-align: center;\t\r\n\t-webkit-align-items: center;\t\r\n\t        align-items: center; \r\n\twidth: 60%;\r\n\theight: 64upx;\r\n\tbackground-color: #f5f5f5;\r\n\tborder-radius: 32upx;  \r\n\tpadding: 0upx 30upx;\n}\n.search_box .prompt{\r\n\tfont-size: 28upx;\r\n\tcolor: #cccccc;\n}\n.search_box .icon_search {\r\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n\tbackground-position: center center;\r\n\tbackground-repeat: no-repeat;\r\n\tbackground-size: cover;\r\n\twidth: 29upx;\r\n\theight: 28upx;\r\n\tmargin-right: 20upx;\n}\r\n", ""]);
+exports.push([module.i, "/* 显示温度 */\n.mjj_box .show_temp{\r\n \theight: 30%; \r\n \tpadding: 30upx;\r\n \t-webkit-box-sizing: border-box;\r\n \t        box-sizing: border-box;\n}\n.show_temp .show_temp_title,\r\n.contl_mjj .show_temp_title{\r\n \tdisplay: -webkit-box;\r\n \tdisplay: -webkit-flex;\r\n \tdisplay: flex;\r\n \t-webkit-box-pack: center;\r\n \t-webkit-justify-content: center;\r\n \t        justify-content: center;\r\n \t-webkit-box-orient: horizontal;\r\n \t-webkit-box-direction: normal;\r\n \t-webkit-flex-direction: row;\r\n \t        flex-direction: row;\r\n \t-webkit-box-align: center;\r\n \t-webkit-align-items: center;\r\n \t        align-items: center;  \r\n \tfont-size:32upx; \r\n \theight: 10%; \r\n \tcolor:rgba(120,120,120,1);\n}\n.show_temp .temp_shelf{ \r\n\tmargin-top: 30upx;\r\n\twidth: 100%; \r\n\theight: 90%;\n}\n.temp_shelf_box {\r\n    width:100%;\r\n    height: 90%; \r\n    white-space: nowrap; \r\n    -webkit-box-sizing: border-box; \r\n            box-sizing: border-box;\n}\n.temp_shelf_box .item_box{\r\n\twidth: 33%;\r\n\theight: 100%;\r\n\tmargin-right: 10upx;\r\n\tdisplay: inline-block;\n}\n.temp_shelf_box .item_box_box{\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\r\n\twidth: 90%;\r\n\theight: 70%;  \r\n\t-webkit-box-shadow:0px 10upx 30upx 0px rgba(0, 0, 0, 0.1);  \r\n\t        box-shadow:0px 10upx 30upx 0px rgba(0, 0, 0, 0.1);\r\n\tborder-radius:20px;\n}\n.temp_shelf_box .item_count{ \r\n\tfont-size:40upx;\r\n\tfont-family:Helvetica;\r\n\tfont-weight:bold;\n}\n.temp_shelf_box .item_unit{ \r\n\tfont-size:28upx;\r\n\tfont-family:PingFang SC;  \r\n\tmargin-left: 10upx;\n}\n.temp_shelf_box .item_title{  \r\n\tfont-size:34upx;\r\n\tfont-family:PingFang SC;\r\n\tfont-weight:500;\r\n\tcolor:rgba(181,181,181,1);\n}\r\n/* 滚动指示符 */\n.scroll_point{ \t \r\n\tposition: absolute;\r\n\tleft: 50%;\r\n\t-webkit-transform: translateX(-50%);\r\n\t        transform: translateX(-50%);\n}\n.point_default{\r\n\tmargin: 5upx;\r\n\tfloat: left; \r\n\twidth:14upx;\r\n\theight:8upx;\r\n\tbackground:#D0E6FF;\r\n\tborder-radius:4px;\n}\n.active_default{\r\n\twidth:14upx;\r\n\theight:8upx;\r\n\tborder-radius:4px; \r\n\tbackground: #1C87FF;\n}\r\n/* 选择区列 */\n.mjj_box .sel_qu_lie{ \r\n\theight: 8%;\t \r\n\tdisplay: -webkit-box;\t \r\n\tdisplay: -webkit-flex;\t \r\n\tdisplay: flex;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: row;\r\n\t        flex-direction: row;\r\n\t-webkit-box-pack: justify;\r\n\t-webkit-justify-content: space-between;\r\n\t        justify-content: space-between; \r\n\t-webkit-box-shadow:0px 5px 10px 0px rgba(0, 0, 0, 0.05); \r\n\t        box-shadow:0px 5px 10px 0px rgba(0, 0, 0, 0.05);\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\n}\n.sel_qu_lie_text{\r\n\tmargin-left: 30upx; \r\n\tfont-size:32upx; \r\n\tcolor:rgba(120,120,120,1);\n}\n.sel_qu_lie_text_cur{ \r\n\tfont-size:34upx; \r\n\tfont-weight:bold;\r\n\tcolor:rgba(28,135,255,1);\n}\n.sel_qu_lie_list{\r\n\tmargin-right: 30upx; \r\n\tfont-size:34upx;  \r\n\tcolor:rgba(181,181,181,1);\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: row;\r\n\t        flex-direction: row;\n}\r\n/* 控制密集架 */\n.mjj_box .contl_mjj{\r\n\theight: 54%;\r\n\tpadding: 30upx;\r\n\t-webkit-box-sizing: border-box;\r\n\t        box-sizing: border-box;\n}\n.contl_mjj .mjj_move,\r\n.contl_mjj .mjj_fun_contrl{\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: justify;\r\n\t-webkit-justify-content: space-between;\r\n\t        justify-content: space-between;\r\n\t-webkit-box-orient: horizontal;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: row;\r\n\t        flex-direction: row;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\r\n\tmargin-top: 50upx;\n}\n.contl_mjj .mjj_move .mjj_move_item{\r\n\twidth: 33%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\n}\n.contl_mjj .mjj_fun_contrl .mjj_move_item{\r\n\twidth: 25%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-align: center;\r\n\t-webkit-align-items: center;\r\n\t        align-items: center;\n}\n.mjj_move_item uni-image{\r\n\twidth: 42upx;\r\n\theight: 42upx;\r\n\tpadding: 40upx;  \r\n\tborder-radius:50%;\n}\n.mjj_move_item .text{ \r\n\tfont-size:32upx; \r\n\tcolor:rgba(181,181,181,1);\n}\nuni-image.left{\r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(28,167,255,1)),to(rgba(42,197,255,1)));\r\n\tbackground:-webkit-linear-gradient(bottom,rgba(28,167,255,1),rgba(42,197,255,1));\r\n\tbackground:linear-gradient(0deg,rgba(28,167,255,1),rgba(42,197,255,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(28,135,255,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(28,135,255,0.1);\n}\nuni-image.start,uni-image.stop{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(255,187,79,1)),to(rgba(255,137,33,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(255,187,79,1),rgba(255,137,33,1)); \r\n\tbackground:linear-gradient(0deg,rgba(255,187,79,1),rgba(255,137,33,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(255,144,0,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(255,144,0,0.1);\n}\nuni-image.right{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(28,167,255,1)),to(rgba(42,197,255,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(28,167,255,1),rgba(42,197,255,1)); \r\n\tbackground:linear-gradient(0deg,rgba(28,167,255,1),rgba(42,197,255,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(28,135,255,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(28,135,255,0.1);\n}\nuni-image.ventilation{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(11,255,212,1)),to(rgba(0,227,123,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(11,255,212,1),rgba(0,227,123,1)); \r\n\tbackground:linear-gradient(0deg,rgba(11,255,212,1),rgba(0,227,123,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(0,227,123,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(0,227,123,0.1);\n}\nuni-image.openSh{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(255,214,71,1)),to(rgba(255,174,46,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(255,214,71,1),rgba(255,174,46,1)); \r\n\tbackground:linear-gradient(0deg,rgba(255,214,71,1),rgba(255,174,46,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(255,174,46,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(255,174,46,0.1);\n}\nuni-image.closeSh{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(48,204,255,1)),to(rgba(0,222,255,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(48,204,255,1),rgba(0,222,255,1)); \r\n\tbackground:linear-gradient(0deg,rgba(48,204,255,1),rgba(0,222,255,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(48,204,255,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(48,204,255,0.1);\n}\nuni-image.lock{ \r\n\tbackground:-webkit-gradient(linear,left bottom, left top,from(rgba(255,153,102,1)),to(rgba(255,94,98,1))); \r\n\tbackground:-webkit-linear-gradient(bottom,rgba(255,153,102,1),rgba(255,94,98,1)); \r\n\tbackground:linear-gradient(0deg,rgba(255,153,102,1),rgba(255,94,98,1));\r\n\t-webkit-box-shadow:0px 10px 30px 0px rgba(255,94,98,0.1);\r\n\t        box-shadow:0px 10px 30px 0px rgba(255,94,98,0.1);\n}\r\n/* app */\n.mjj_box .app_address{\r\n\theight: 8%;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-box-orient: vertical;\r\n\t-webkit-box-direction: normal;\r\n\t-webkit-flex-direction: column;\r\n\t        flex-direction: column;\r\n\t-webkit-box-pack: center;\r\n\t-webkit-justify-content: center;\r\n\t        justify-content: center;\r\n\ttext-align: center; \r\n\tfont-size:32upx; \r\n\tcolor:rgba(206,206,206,1);\r\n\tborder-bottom: 1px solid #f00;\n}\n.content{\r\n\twidth: 100%;\r\n\theight: 100%; \r\n\toverflow: hidden;\r\n\t-webkit-box-sizing: border-box;\r\n\t        box-sizing: border-box;\n}\n.content .status_sty{\r\n\twidth: 100%;\r\n\tbackground: #00a8ad;\n}\n.content .header_box{\r\n\tposition: relative;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex; \r\n\t-webkit-box-pack: justify; \r\n\t-webkit-justify-content: space-between; \r\n\t        justify-content: space-between;\r\n\theight: 48px;  \r\n\tbackground: #00a8ad;\n}\nuni-button[type=primary]{\r\n\tbackground-color:#00a8ad!important;\n}\n.address_select { \r\n\twidth:30%; \r\n\tline-height: 48px;\r\n\tpadding-left: 36upx;\r\n\tfont-size: 32upx; \r\n\tcolor: #FFF;\n}\n.search_box {\r\n\tposition: absolute;\r\n\ttop: 50%;\r\n\tright: 6%;\r\n\t-webkit-transform: translateY(-50%);\r\n\t        transform: translateY(-50%);\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\t\r\n\t-webkit-box-align: center;\t\r\n\t-webkit-align-items: center;\t\r\n\t        align-items: center; \r\n\twidth: 60%;\r\n\theight: 64upx;\r\n\tbackground-color: #f5f5f5;\r\n\tborder-radius: 32upx;  \r\n\tpadding: 0upx 30upx;\n}\n.search_box .prompt{\r\n\tfont-size: 28upx;\r\n\tcolor: #cccccc;\n}\n.search_box .icon_search {\r\n\tbackground-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n\tbackground-position: center center;\r\n\tbackground-repeat: no-repeat;\r\n\tbackground-size: cover;\r\n\twidth: 29upx;\r\n\theight: 28upx;\r\n\tmargin-right: 20upx;\n}\n.anthoerBox {\r\n\twidth: 100%;\r\n\theight: 90%;\r\n\twhite-space: nowrap;\r\n\tdisplay: -webkit-box;\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n\t-webkit-flex-wrap: wrap;\r\n\t        flex-wrap: wrap;\n}\n.anthoerBox .item_box{\r\n\tmargin-right: 26upx;\r\n\tmargin-left: 5upx;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -3407,7 +3453,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../../../../../HBuilderX.2.6.5.20200314.full/HBuilderX/plugins/uniapp-cli/node_modules/css-loader/dist/runtime/api.js */ 10);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.uni-card {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  -webkit-box-shadow: 0 0 0 transparent;\r\n          box-shadow: 0 0 0 transparent;\r\n  margin: 30px 20px;\r\n  background-color: #ffffff;\r\n  position: relative;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-shadow: 0px 10px 30upx 0px rgba(0, 0, 0, 0.1);\r\n          box-shadow: 0px 10px 30upx 0px rgba(0, 0, 0, 0.1);\r\n  border-radius: 30upx;\r\n  overflow: hidden;\n}\n.uni-card__header {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  position: relative;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  padding: 24upx;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  border-bottom: 1px solid #E5E5E5;\n}\n.uni-card__header-extra-img {\r\n  height: 40upx;\r\n  width: 40upx;\r\n  background: #1C87FF;\r\n  padding: 10upx;\r\n  border-radius: 40upx;\r\n  margin-right: 16upx;\n}\n.uni-card__header-title-text {\r\n  font-size: 32upx;\r\n  font-weight: bold;\r\n  color: #1c87ff;\n}\n.uni-card__content {\r\n  position: relative;\r\n  color: #333;\r\n  padding: 20upx 40upx;\n}\n.uni-card__content--pd {\r\n  padding: 24upx;\n}\n.uni-card__content--list {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  margin-top: 30upx;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n          justify-content: space-between;\n}\n.uni-card__content--title {\r\n  width: 30%;\r\n  font-size: 30upx;\r\n  color: #b5b5b5;\n}\n.uni-card__content--content {\r\n  text-align: right;\r\n  width: 60%;\r\n  height: 40upx;\r\n  font-size: 30upx;\r\n  color: #656565;\r\n  white-space: nowrap;\n}\n.uni-card__btn {\r\n  text-align: center;\r\n  width: 180upx;\r\n  padding: 10upx 20upx;\r\n  background: #1c87ff;\r\n  border-radius: 31upx;\r\n  color: #FFF;\n}\n.circle_item {\r\n  width: 14upx;\r\n  height: 14upx;\r\n  display: inline-block;\r\n  border-radius: 50%;\r\n  margin: 6upx 20upx;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.uni-card {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-flex: 1;\r\n  -webkit-flex: 1;\r\n          flex: 1;\r\n  -webkit-box-shadow: 0 0 0 transparent;\r\n          box-shadow: 0 0 0 transparent;\r\n  margin: 30px 20px;\r\n  background-color: #ffffff;\r\n  position: relative;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-shadow: 0px 10px 30upx 0px rgba(0, 0, 0, 0.1);\r\n          box-shadow: 0px 10px 30upx 0px rgba(0, 0, 0, 0.1);\r\n  border-radius: 30upx;\r\n  overflow: hidden;\n}\n.uni-card__header {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  position: relative;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  padding: 24upx;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  border-bottom: 1px solid #E5E5E5;\n}\n.uni-card__header-extra-img {\r\n  height: 40upx;\r\n  width: 40upx;\r\n  background: #00a8ad;\r\n  padding: 10upx;\r\n  border-radius: 40upx;\r\n  margin-right: 16upx;\n}\n.uni-card__header-title-text {\r\n  font-size: 32upx;\r\n  font-weight: bold;\r\n  color: #00a8ad;\n}\n.uni-card__content {\r\n  position: relative;\r\n  color: #333;\r\n  padding: 20upx 40upx;\n}\n.uni-card__content--pd {\r\n  padding: 24upx;\n}\n.uni-card__content--list {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  margin-top: 30upx;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: row;\r\n          flex-direction: row;\r\n  -webkit-box-pack: justify;\r\n  -webkit-justify-content: space-between;\r\n          justify-content: space-between;\n}\n.uni-card__content--title {\r\n  width: 30%;\r\n  font-size: 30upx;\r\n  color: #b5b5b5;\n}\n.uni-card__content--content {\r\n  text-align: right;\r\n  width: 60%;\r\n  height: 40upx;\r\n  font-size: 30upx;\r\n  color: #656565;\r\n  white-space: nowrap;\n}\n.uni-card__btn {\r\n  text-align: center;\r\n  width: 180upx;\r\n  padding: 10upx 20upx;\r\n  background: #00a8ad;\r\n  border-radius: 31upx;\r\n  color: #FFF;\n}\n.circle_item {\r\n  width: 14upx;\r\n  height: 14upx;\r\n  display: inline-block;\r\n  border-radius: 50%;\r\n  margin: 6upx 20upx;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
