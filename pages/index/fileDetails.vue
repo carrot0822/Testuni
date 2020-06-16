@@ -297,7 +297,7 @@
 	.uni-card__header-extra-img {
 		height: $uni-img-size-sm;
 		width: $uni-img-size-sm;
-		background: #1C87FF;
+		background: #00a8ad;
 		padding: 10upx;
 		border-radius: $uni-img-size-sm;
 		margin-right: $uni-spacing-col-base;
@@ -306,7 +306,7 @@
 	.uni-card__header-title-text {
 		font-size: 32upx;
 		font-weight: bold;
-		color: rgba(28, 135, 255, 1);
+		color: #00a8ad;
 	}
 
 	.uni-card__content {
@@ -345,7 +345,7 @@
 		text-align: center;
 		width: 180upx;
 		padding: 10upx 20upx;
-		background: rgba(28, 135, 255, 1);
+		background: #00a8ad;
 		border-radius: 31upx;
 		color: #FFF;
 	}

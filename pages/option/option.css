@@ -195,14 +195,17 @@ image.lock{
 }
 .content .status_sty{
 	width: 100%;
-	background: #007AFF;
+	background: #00a8ad;
 }
 .content .header_box{
 	position: relative;
 	display: flex; 
 	justify-content: space-between;
 	height: 48px;  
-	background: #007AFF;
+	background: #00a8ad;
+}
+uni-button[type=primary]{
+	background-color:#00a8ad!important;
 }
 .address_select { 
 	width:30%; 

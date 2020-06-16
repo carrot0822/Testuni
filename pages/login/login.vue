@@ -18,7 +18,7 @@
 			<view class="login_text">密码</view>
 			<input @focus="test()" @blur="test2()" type="text" password="true" v-model="user.password" />
 
-			<button @tap="login()" style="color: #FFF;background: #1C87FF;margin-top: 70upx;font-size: 34upx;">登录</button>
+			<button @tap="login()" style="color: #FFF;background: #00a8ad;margin-top: 70upx;font-size: 34upx;">登录</button>
 
 		</view>
 	</view>
@@ -171,7 +171,7 @@
 		padding-top: 50upx;
 		padding-left: 40upx;
 		color: #fff;
-		background-color: #1C87FF;
+		background-color: #00a8ad;
 	}
 
 	.system-title .eng {

@@ -29,7 +29,7 @@
 		    "path" : "pages/index/fileDetails",
 		    "style" : {
 		        "navigationBarTitleText" : "档案详情",
-		        "navigationBarBackgroundColor" : "#1C87FF",
+		        "navigationBarBackgroundColor" : "#00a8ad",
 		        "navigationBarTextStyle" : "white",
 				"enablePullDownRefresh":true
 		    }
@@ -38,7 +38,7 @@
 		    "path" : "pages/scanLog/log",
 		    "style" : {
 		        "navigationBarTitleText" : "报警信息",
-		        "navigationBarBackgroundColor" : "#1C87FF",
+		        "navigationBarBackgroundColor" : "#00a8ad",
 		        "navigationBarTextStyle" : "white",
 				"enablePullDownRefresh":true
 		    }
