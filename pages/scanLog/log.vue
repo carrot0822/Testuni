@@ -88,10 +88,7 @@
 			let _this = this;
 			// 初始第一次查询
 			this.initSearch()
-			uni.showToast({
-				title: '正在查询',
-				duration: 1000
-			});
+			
 			console.log('第一次请求')
 		},	
 		// 下拉刷新
